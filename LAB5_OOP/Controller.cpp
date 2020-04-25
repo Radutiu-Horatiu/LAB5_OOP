@@ -125,7 +125,7 @@ void Controller::admin_update_film_from_repository()
 
 void Controller::user_show_films_by_genres()
 {
-	cout < 
+	
 }
 
 void Controller::user_delete_film_from_watchlist()
