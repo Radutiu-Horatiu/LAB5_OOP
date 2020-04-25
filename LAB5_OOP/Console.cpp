@@ -16,6 +16,7 @@ void Console::show_menu()
 {
 
 	Repository::read_file(Repository::get_films(), "filme.txt");
+	Repository::read_file(WatchList::get_watchlist(), "watchlist.txt");
 
 	string option = " ";
 

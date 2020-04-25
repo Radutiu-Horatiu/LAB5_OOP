@@ -17,7 +17,7 @@ void Repository::print_films(vector <Film> films)
 {
     for (int i = 0; i < films.size(); i++)
         cout << "ID: " << films[i].get_id() << " Title: " << films[i].get_title() << " Genre: " << films[i].get_genre() <<
-        " Year: " << films[i].get_year() << " Likes: " << films[i].get_number_likes() << " Trailer-link: " << films[i].get_trailer() << "\n";
+        " Year: " << films[i].get_year() << " Likes: " << films[i].get_number_likes() << "\n";
 }
 
 bool Repository::add_film(string TITLE, string GENRE, string YEAR, string TRAILER, int ID)
@@ -51,7 +51,7 @@ bool Repository::remove_film(int ID)
 bool Repository::update_film(int ID, string NEW_TITLE, string NEW_GENRE, string NEW_YEAR, string NEW_TRAILER)
 {
     //film doesn t exist
-    if (v.validate_uniqueness(ID, get_films()) == true)
+    if (v.validate_uniqueness(ID, get_films()))
         return false;
 
     for (int i = 0; i < films.size(); i++)
@@ -96,6 +96,7 @@ vector <Film> Repository::show_films_to_user(string GENRE)
             {
                 if (iequals(GENRE, get_films()[i].get_genre()))
                 {
+
                     //If film with given GENRE was found, add it to the FINAL RETURN VECTOR.
                     genreReturnVector.push_back(get_films()[i]);
                 }
@@ -128,7 +129,7 @@ void Repository::write_file(vector <Film> v, string filename)
     fin.open(filename, ofstream::out | ofstream::trunc);
 
     for (int i = 0; i < v.size(); i++)
-        fin << v[i].get_id() << " " << v[i].get_title() << " " << v[i].get_genre() << " " << v[i].get_year() << " " << v[i].get_number_likes() << 
+        fin << v[i].get_id() << " " << v[i].get_title() << " " << v[i].get_genre() << " " << v[i].get_number_likes() << " " << v[i].get_year() << 
         " " << v[i].get_trailer() << '\n';
 
     fin.close();

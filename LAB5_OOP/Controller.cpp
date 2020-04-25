@@ -97,6 +97,13 @@ void Controller::admin_update_film_from_repository()
 		cin >> id;
 	}
 
+	Validate v;
+	if (v.validate_uniqueness(id, get_films()))
+	{
+		cout << "Film does not exist!\n";
+		return;
+	}
+
 	string title;
 	string genre;
 	string year;
@@ -152,15 +159,21 @@ void Controller::user_show_films_by_genres()
 
 		if (answer == "y" or answer == "Y")
 		{
-			add_film_to_watchlist(result[i]);
-			cout << "\nFilm successfully added to your watchlist!\n\n";
+
+			if (add_film_to_watchlist(result[i]))
+			{
+				write_file(get_watchlist(), "watchlist.txt");
+				cout << "\nFilm successfully added to your watchlist!\n\n";
+			}
+			else
+				cout << "\nSomething went wrong.\n";
 		}
 
 		cout << "Watch another trailer?\nY - yes, N - no\nAnswer: ";
-		string answer;
-		cin >> answer;
+		string answer2;
+		cin >> answer2;
 
-		if (answer == "n" or answer == "N")
+		if (answer2 == "n" or answer2 == "N")
 			break;
 	}
 
@@ -168,9 +181,53 @@ void Controller::user_show_films_by_genres()
 
 void Controller::user_delete_film_from_watchlist()
 {
+	cout << "\nRemove from watchlist\n\n";
+
+	cout << "Your watchlist:\n";
+
+	print_films(get_watchlist());
+
+	int id;
+	cout << "\nID of film to remove: ";
+	cin >> id;
+
+	while (cin.fail()) {
+		cout << "Error ID must be integer: " << endl;
+		cin.clear();
+		cin.ignore(256, '\n');
+		cin >> id;
+	}
+
+	if (remove_film_from_watchlist(id))
+	{
+		cout << "\nFilm removed from watchlist successfully!\n";
+
+		string like;
+
+		cout << "Liked the movie?\nY - yes, N - no\nAnswer: ";
+		cin >> like;
+
+		if (like == "Y" or like == "y")
+		{
+			for (int i = 0; i < get_films().size(); i++)
+				if (get_films()[i].get_id() == id)
+				{
+					get_films()[i].set_number_likes(get_films()[i].get_number_likes() + 1);
+
+					write_file(get_films(), "filme.txt");
+					write_file(get_watchlist(), "watchlist.txt");
+
+					cout << "\nLike submitted!\n";
+				}
+		}
+	}
+	else
+		cout << "\nSomething went wrong.\n";
 
 }
 
 void Controller::user_show_watchlist()
 {
+	cout << "\nWatchlist\n\n";
+	print_films(get_watchlist());
 }

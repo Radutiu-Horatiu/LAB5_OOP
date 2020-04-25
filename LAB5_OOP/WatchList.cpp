@@ -28,7 +28,7 @@ bool WatchList::add_film_to_watchlist(Film filmToBeAdded)
 {
     Validate v;
 
-    if (!v.validate_uniqueness(filmToBeAdded.get_id(), watchlist))
+    if (!(v.validate_uniqueness(filmToBeAdded.get_id(), watchlist)))
     {
         return false; //Film already in watchlist.
     }

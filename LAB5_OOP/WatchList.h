@@ -12,6 +12,8 @@ private:
 
 public:
 
+    vector<Film>& get_watchlist() { return watchlist; }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>    Removes the film from watchlist described by ID. </summary>
     ///

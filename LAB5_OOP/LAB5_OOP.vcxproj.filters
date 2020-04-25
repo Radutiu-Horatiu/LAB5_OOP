@@ -61,5 +61,8 @@
     <Text Include="filme.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="watchlist.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -14,6 +14,12 @@ private:
 
 public:
 
+	/// <summary>	Gets the films. </summary>
+	///
+	/// <remarks>	Horatiu, 4/25/2020. </remarks>
+	///
+	/// <returns>	The films. </returns>
+
 	vector <Film>& get_films() { return films; }
 
 	/// <summary>	Print films. </summary>
