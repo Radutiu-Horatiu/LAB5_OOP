@@ -30,9 +30,10 @@ bool Repository::remove_film(int ID)
 
 bool iequals(const string& a, const string& b)
 {
-    return std::equal(a.begin(), a.end(),
+    return equal(a.begin(), a.end(),
         b.begin(), b.end(),
-        [](char a, char b) {
+        [](char a, char b) 
+        {
             return tolower(a) == tolower(b);
         });
 }
