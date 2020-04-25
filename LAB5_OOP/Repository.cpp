@@ -15,7 +15,7 @@ Repository::~Repository()
 bool Repository::add_film(string TITLE, string GENRE, string YEAR, string TRAILER, int ID)
 {	
     //checking if everything is good to go
-	if (!(v.validate_string(TITLE) == true and v.validate_string(GENRE) == true and
+	if (!(v.validate_string(GENRE) == true and
 		v.validate_int(YEAR) == true and v.validate_uniqueness(ID, get_films()) == true))
 		return false;
 
@@ -120,8 +120,8 @@ void Repository::write_file(vector <Film> v, string filename)
     fin.open(filename, ofstream::out | ofstream::trunc);
 
     for (int i = 0; i < v.size(); i++)
-        fin << v[i].get_id() << " " << v[i].get_title() << " " << v[i].get_genre() << " " << v[i].get_year() << v[i].get_number_likes() << 
-        v[i].get_trailer() << '\n';
+        fin << v[i].get_id() << " " << v[i].get_title() << " " << v[i].get_genre() << " " << v[i].get_year() << " " << v[i].get_number_likes() << 
+        " " << v[i].get_trailer() << '\n';
 
     fin.close();
 }
@@ -129,7 +129,6 @@ void Repository::write_file(vector <Film> v, string filename)
 void Repository::read_file(vector <Film>& v, string file)
 {
     ifstream myReadFile;
-    string word;
     string filename = file;
     myReadFile.open(filename.c_str());
 
@@ -151,7 +150,7 @@ void Repository::read_file(vector <Film>& v, string file)
         myReadFile >> temp;
         if (temp != "")
         {
-            id = stod(temp, &sz);
+            id = stoi(temp, &sz);
             f.set_id(id);
         }
 
@@ -166,16 +165,17 @@ void Repository::read_file(vector <Film>& v, string file)
         myReadFile >> temp;
         if (temp != "")
         {
-            year = stoi(temp, &sz);
-            f.set_year(year);
-        }
-
-        myReadFile >> temp;
-        if (temp != "")
-        {
             number_likes = stoi(temp, &sz);
             f.set_number_likes(number_likes);
         }
+
+        myReadFile >> year;
+        if (year != "")
+            f.set_year(year);
+
+        myReadFile >> trailer;
+        if (trailer != "")
+            f.set_trailer(trailer);
 
         if (title != "")
             v.push_back(f);
@@ -184,6 +184,7 @@ void Repository::read_file(vector <Film>& v, string file)
 
     if (v.size() > 0)
         v.erase(v.end() - 1);
+
     myReadFile.close();
 
 }

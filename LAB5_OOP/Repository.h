@@ -14,7 +14,7 @@ private:
 
 public:
 
-	vector <Film> get_films() { return films; }
+	vector <Film>& get_films() { return films; }
 
 	/// <summary>	Adds a film. </summary>
 	///

@@ -2,7 +2,7 @@
 #include "Controller.h"
 using namespace std;
 
-class Console
+class Console:public Controller
 {
 private:
 
