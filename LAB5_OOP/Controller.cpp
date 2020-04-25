@@ -58,7 +58,7 @@ void Controller::admin_delete_film_from_repository()
 {
 	cout << "\nDelete film\nList of films:\n";
 
-	print_films();
+	print_films(get_films());
 
 	int id;
 	cout << "\nID of film to delete: ";
@@ -84,7 +84,7 @@ void Controller::admin_update_film_from_repository()
 {
 	cout << "\nUpdate film\nList of films:\n";
 
-	print_films();
+	print_films(get_films());
 
 	int id;
 	cout << "\nID of film to update: ";
@@ -125,7 +125,20 @@ void Controller::admin_update_film_from_repository()
 
 void Controller::user_show_films_by_genres()
 {
-	
+	cout << "\nBrowse films by genre\n";
+
+	cout << "Example: DRAMA ACTION THRILLER SF CRIME\n";
+
+	cout << "\nChoose genre: ";
+
+	string genre;
+	cin >> genre;
+
+	vector <Film> result = show_films_to_user(genre);
+
+	cout << "\nFilms found:\n";
+	print_films(result);
+
 }
 
 void Controller::user_delete_film_from_watchlist()

@@ -20,7 +20,7 @@ public:
 	///
 	/// <remarks>	Horatiu, 4/25/2020. </remarks>
 
-	void print_films();
+	void print_films(vector <Film> films);
 
 	/// <summary>	Adds a film. </summary>
 	///

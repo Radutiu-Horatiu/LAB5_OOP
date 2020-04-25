@@ -40,7 +40,7 @@ void Console::show_menu()
 		}
 		else if (option == "2")
 		{
-
+			show_user_menu();
 		}
 		else if (option == "0")
 		{
@@ -91,28 +91,28 @@ void Console::show_user_menu()
 
 	string option = " ";
 
-	while (option != "0")
-	{
-		cout << "\nYour option: ";
-		cin >> option;
+	cout << "\nYour option: ";
+	cin >> option;
 
-		if (option == "1")
-		{
-			Controller::user_show_films_by_genres();
-		}
-		else if (option == "2")
-		{
-			Controller::user_delete_film_from_watchlist();
-		}
-		else if (option == "3")
-		{
-			Controller::user_show_watchlist();
-		}
-		else if (option == "0")
-		{
-			break;
-		}
-		else
-			cout << "\nInvalid option!\n";
+	if (option == "1")
+	{
+		Controller::user_show_films_by_genres();
 	}
+	else if (option == "2")
+	{
+		Controller::user_delete_film_from_watchlist();
+	}
+	else if (option == "3")
+	{
+		Controller::user_show_watchlist();
+	}
+	else if (option == "0")
+	{
+		return;
+	}
+	else
+		cout << "\nInvalid option!\n";
+
+	show_user_menu();
+
 }

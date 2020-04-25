@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 Repository::Repository()
@@ -12,7 +13,7 @@ Repository::~Repository()
 {
 }
 
-void Repository::print_films()
+void Repository::print_films(vector <Film> films)
 {
     for (int i = 0; i < films.size(); i++)
         cout << "ID: " << films[i].get_id() << " Title: " << films[i].get_title() << " Genre: " << films[i].get_genre() <<
