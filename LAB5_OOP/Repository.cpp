@@ -201,5 +201,5 @@ void Repository::open_link_in_browser(string LINK)
 {
     system(string("cmd /c start " + LINK).c_str());
 
-    cout << LINK << " Was opened!" << endl;
+    //cout << LINK << " Was opened!" << endl;
 }

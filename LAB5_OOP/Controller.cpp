@@ -137,12 +137,38 @@ void Controller::user_show_films_by_genres()
 	vector <Film> result = show_films_to_user(genre);
 
 	cout << "\nFilms found:\n";
-	print_films(result);
+	
+	for (int i = 0; i < result.size(); i++)
+	{
+		cout << "ID: " << result[i].get_id() << " Title: " << result[i].get_title() << " Genre: " << result[i].get_genre() <<
+			" Year: " << result[i].get_year() << " Likes: " << result[i].get_number_likes() << "\n";
+
+		open_link_in_browser(result[i].get_trailer());
+
+		string answer;
+
+		cout << "\nAdd to watchlist?\nY - yes, N - no\nAnswer: ";
+		cin >> answer;
+
+		if (answer == "y" or answer == "Y")
+		{
+			add_film_to_watchlist(result[i]);
+			cout << "\nFilm successfully added to your watchlist!\n\n";
+		}
+
+		cout << "Watch another trailer?\nY - yes, N - no\nAnswer: ";
+		string answer;
+		cin >> answer;
+
+		if (answer == "n" or answer == "N")
+			break;
+	}
 
 }
 
 void Controller::user_delete_film_from_watchlist()
 {
+
 }
 
 void Controller::user_show_watchlist()
