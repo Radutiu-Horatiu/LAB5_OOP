@@ -16,6 +16,12 @@ public:
 
 	vector <Film>& get_films() { return films; }
 
+	/// <summary>	Print films. </summary>
+	///
+	/// <remarks>	Horatiu, 4/25/2020. </remarks>
+
+	void print_films();
+
 	/// <summary>	Adds a film. </summary>
 	///
 	/// <remarks>	Horatiu, 4/25/2020. </remarks>

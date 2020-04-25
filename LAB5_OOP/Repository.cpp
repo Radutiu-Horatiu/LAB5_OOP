@@ -12,6 +12,13 @@ Repository::~Repository()
 {
 }
 
+void Repository::print_films()
+{
+    for (int i = 0; i < films.size(); i++)
+        cout << "ID: " << films[i].get_id() << " Title: " << films[i].get_title() << " Genre: " << films[i].get_genre() <<
+        " Year: " << films[i].get_year() << " Likes: " << films[i].get_number_likes() << " Trailer-link: " << films[i].get_trailer() << "\n";
+}
+
 bool Repository::add_film(string TITLE, string GENRE, string YEAR, string TRAILER, int ID)
 {	
     //checking if everything is good to go
