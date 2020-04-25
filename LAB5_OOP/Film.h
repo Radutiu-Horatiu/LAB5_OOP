@@ -9,9 +9,11 @@ private:
 
 	string title;
 	string genre;
-	int year = 0;
+	string year;
 	int number_likes = 0;
 	string trailer;
+
+	int id = 0;
 
 public:
 
@@ -21,8 +23,8 @@ public:
 	string get_genre() { return genre; }
 	void set_genre(string new_genre) { genre = new_genre; }
 
-	int get_year() { return year; }
-	void set_year(int new_year) { year = new_year; }
+	string get_year() { return year; }
+	void set_year(string new_year) { year = new_year; }
 
 	int get_number_likes() { return number_likes; }
 	void set_number_likes(int new_number_likes) { number_likes = new_number_likes; }
@@ -30,9 +32,15 @@ public:
 	string get_trailer() { return trailer; }
 	void set_trailer(string new_trailer) { trailer = new_trailer; }
 
+	string get_trailer() { return trailer; }
+	void set_trailer(string new_trailer) { trailer = new_trailer; }
+
+	int get_id() { return id; }
+	void set_id(int new_id) { id = new_id; }
+
 	Film();
 
-	Film(string t, string g, int y, int nr_l, string tr);
+	Film(string TITLE, string GENRE, string YEAR, string TRAILER, int ID);
 
 	~Film();
 };

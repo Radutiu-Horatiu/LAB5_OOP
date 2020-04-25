@@ -152,12 +152,14 @@
     <ClCompile Include="Film.cpp" />
     <ClCompile Include="LAB5_OOP.cpp" />
     <ClCompile Include="Repository.cpp" />
+    <ClCompile Include="Validate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Film.h" />
     <ClInclude Include="Repository.h" />
+    <ClInclude Include="Validate.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="filme.txt" />

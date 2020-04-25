@@ -6,16 +6,18 @@ Film::Film()
 {
 	title = "?";
 	genre = "?";
+	year = "?";
 	trailer = "?";
+	
 }
 
-Film::Film(string t, string g, int y, int nr_l, string tr)
+Film::Film(string TITLE, string GENRE, string YEAR, string TRAILER, int ID)
 {
-	title = t;
-	genre = g;
-	year = y;
-	number_likes = nr_l;
-	trailer = tr;
+	title = TITLE;
+	genre = GENRE;
+	year = YEAR;
+	trailer = TRAILER;
+	id = ID;
 }
 
 Film::~Film()
