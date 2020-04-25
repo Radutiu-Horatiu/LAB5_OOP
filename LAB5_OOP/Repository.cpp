@@ -1,4 +1,6 @@
 #include "Repository.h"
+#include <stdlib.h>
+#include <iostream>
 #include <fstream>
 using namespace std;
 
@@ -184,4 +186,11 @@ void Repository::read_file(vector <Film>& v, string file)
         v.erase(v.end() - 1);
     myReadFile.close();
 
+}
+
+void Repository::open_link_in_browser(string LINK)
+{
+    system(string("cmd /c start " + LINK).c_str());
+
+    cout << LINK << " Was opened!" << endl;
 }
