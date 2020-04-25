@@ -12,7 +12,7 @@ Validate::~Validate()
 
 bool Validate::validate_int(string s)
 {
-    if (s.length != 4)
+    if (s.length() != 4)
         return false;
 
     for (int i = 0; i < s.length(); i++)
@@ -30,10 +30,8 @@ bool Validate::validate_string(string s)
     return false;
 }
 
-bool Validate::validate_uniqueness(int id_to_validate)
+bool Validate::validate_uniqueness(int id_to_validate, vector <Film> films)
 {
-    vector <Film> films = Repository::get_films();
-
     //checks if the film already exists
     for (int i = 0; i < films.size(); i++)
         if (films[i].get_id() == id_to_validate)

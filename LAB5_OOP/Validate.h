@@ -1,9 +1,10 @@
 #pragma once
 #include <string>
-#include "Repository.h"
+#include <vector>
+#include "Film.h"
 using namespace std;
 
-class Validate:public Repository
+class Validate
 {
 private:
 
@@ -40,7 +41,7 @@ public:
 	///
 	/// <returns>	True if it succeeds, false if it fails. </returns>
 
-	bool validate_uniqueness(int id_to_validate);
+	bool validate_uniqueness(int id_to_validate, vector <Film> films);
 
 };
 

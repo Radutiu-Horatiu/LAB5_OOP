@@ -17,16 +17,42 @@ public:
 
 	vector <Film> get_films() { return films; }
 
-	/// <summary>	Adds a film to the repository. Returns true if the film was successfully added, otherwise false. </summary>
+	/// <summary>	Adds a film. </summary>
 	///
 	/// <remarks>	Horatiu, 4/25/2020. </remarks>
 	///
-	/// <param name="t">   	Film title. </param>
-	/// <param name="g">   	Film genre. </param>
-	/// <param name="y">   	Year of appearance. </param>
-	/// <param name="tr">  	Trailer link. </param>
-	
+	/// <param name="TITLE">  	The title. </param>
+	/// <param name="GENRE">  	The genre. </param>
+	/// <param name="YEAR">   	The year. </param>
+	/// <param name="TRAILER">	The trailer. </param>
+	/// <param name="ID">	  	The identifier. </param>
+	///
+	/// <returns>	True if it succeeds, false if it fails. </returns>
+
 	bool add_film(string TITLE, string GENRE, string YEAR, string TRAILER, int ID);
+
+	/// <summary>	Removes the film described by ID. </summary>
+	///
+	/// <remarks>	Horatiu, 4/25/2020. </remarks>
+	///
+	/// <param name="ID">	The identifier. </param>
+	///
+	/// <returns>	True if it succeeds, false if it fails. </returns>
+
+	bool remove_film(int ID);
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>    Shows all the films (with the given Genre) to the user.
+	///                If Genre is not valid, the function returns the whole list of films.
+	/// </summary>
+	///
+	/// <remarks>    Pinko, 4/25/2020. </remarks>
+	///
+	/// <param name="GENRE">    The genre given as a string(Case Insensitive). </param>
+	///
+	/// <returns>    A vector of the found results. </returns>
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	vector <Film> show_films_to_user(string GENRE);
 
 	Repository();
 	~Repository();

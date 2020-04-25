@@ -32,9 +32,6 @@ public:
 	string get_trailer() { return trailer; }
 	void set_trailer(string new_trailer) { trailer = new_trailer; }
 
-	string get_trailer() { return trailer; }
-	void set_trailer(string new_trailer) { trailer = new_trailer; }
-
 	int get_id() { return id; }
 	void set_id(int new_id) { id = new_id; }
 
