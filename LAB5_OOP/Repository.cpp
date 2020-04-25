@@ -1,5 +1,5 @@
 #include "Repository.h"
-
+#include <fstream>
 using namespace std;
 
 Repository::Repository()
@@ -109,5 +109,79 @@ vector <Film> Repository::show_films_to_user(string GENRE)
     {
         return genreReturnVector; //If FILMS Vector is empty, return Empty Vector.
     }
+
+}
+
+void Repository::write_file(vector <Film> v, string filename)
+{
+    ofstream fin;
+    fin.open(filename, ofstream::out | ofstream::trunc);
+
+    for (int i = 0; i < v.size(); i++)
+        fin << v[i].get_id() << " " << v[i].get_title() << " " << v[i].get_genre() << " " << v[i].get_year() << v[i].get_number_likes() << 
+        v[i].get_trailer() << '\n';
+
+    fin.close();
+}
+
+void Repository::read_file(vector <Film>& v, string file)
+{
+    ifstream myReadFile;
+    string word;
+    string filename = file;
+    myReadFile.open(filename.c_str());
+
+    string title;
+    string genre;
+    string year;
+    int number_likes;
+    string trailer;
+    int id;
+
+    string temp;
+
+    string::size_type sz;
+
+    while (!myReadFile.eof())
+    {
+        Film f;
+
+        myReadFile >> temp;
+        if (temp != "")
+        {
+            id = stod(temp, &sz);
+            f.set_id(id);
+        }
+
+        myReadFile >> title;
+        if (title != "")
+            f.set_title(title);
+
+        myReadFile >> genre;
+        if (genre != "")
+            f.set_genre(genre);
+
+        myReadFile >> temp;
+        if (temp != "")
+        {
+            year = stoi(temp, &sz);
+            f.set_year(year);
+        }
+
+        myReadFile >> temp;
+        if (temp != "")
+        {
+            number_likes = stoi(temp, &sz);
+            f.set_number_likes(number_likes);
+        }
+
+        if (title != "")
+            v.push_back(f);
+
+    }
+
+    if (v.size() > 0)
+        v.erase(v.end() - 1);
+    myReadFile.close();
 
 }

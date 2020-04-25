@@ -1,14 +1,32 @@
 #pragma once
-
+#include "Controller.h"
 using namespace std;
 
 class Console
 {
+private:
+
 public:
+
 	Console();
 	~Console();
 
-private:
+	/// <summary>	Shows the menu. </summary>
+	///
+	/// <remarks>	Horatiu, 4/25/2020. </remarks>
 
+	void show_menu();
+
+	/// <summary>	Shows the admin menu. </summary>
+	///
+	/// <remarks>	Horatiu, 4/25/2020. </remarks>
+
+	void show_admin_menu();
+
+	/// <summary>	Shows the user menu. </summary>
+	///
+	/// <remarks>	Horatiu, 4/25/2020. </remarks>
+
+	void show_user_menu();
 };
 

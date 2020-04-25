@@ -1,5 +1,4 @@
 #pragma once
-#include "Controller.h"
 #include "Film.h"
 #include "Validate.h"
 #include <vector>
@@ -64,6 +63,10 @@ public:
 	/// <returns>    A vector of the found results. </returns>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	vector <Film> show_films_to_user(string GENRE);
+
+	//reading and writing within a file
+	void write_file(vector <Film> v, string filename);
+	void read_file(vector <Film>& v, string file);
 
 	Repository();
 	~Repository();

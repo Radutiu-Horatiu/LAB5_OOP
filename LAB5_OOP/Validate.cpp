@@ -12,9 +12,7 @@ Validate::~Validate()
 
 bool Validate::validate_int(string s)
 {
-    if (s.length() != 4)
-        return false;
-
+  
     for (int i = 0; i < s.length(); i++)
         if (isdigit(s[i]) == false)
             return false;
