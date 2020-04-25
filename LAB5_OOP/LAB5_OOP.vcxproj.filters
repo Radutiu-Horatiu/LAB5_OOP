@@ -33,6 +33,9 @@
     <ClCompile Include="Validate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WatchList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Validate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WatchList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -12,8 +12,9 @@ Repository::~Repository()
 
 bool Repository::add_film(string TITLE, string GENRE, string YEAR, string TRAILER, int ID)
 {	
+    //checking if everything is good to go
 	if (!(v.validate_string(TITLE) == true and v.validate_string(GENRE) == true and
-		v.validate_int(YEAR) == true and v.validate_uniqueness(ID,get_films()) == true))
+		v.validate_int(YEAR) == true and v.validate_uniqueness(ID, get_films()) == true))
 		return false;
 
 	Film new_film(TITLE, GENRE, YEAR, TRAILER, ID);
@@ -25,7 +26,33 @@ bool Repository::add_film(string TITLE, string GENRE, string YEAR, string TRAILE
 
 bool Repository::remove_film(int ID)
 {
-	return false;
+    //film doesn t exist
+    if (v.validate_uniqueness(ID, get_films()) == true)
+        return false;
+
+	for (int i = 0; i < films.size(); i++)
+        if (films[i].get_id() == ID)
+        {
+            films.erase(films.begin() + i);
+            return true;
+        }
+}
+
+bool Repository::update_film(int ID, string NEW_TITLE, string NEW_GENRE, string NEW_YEAR, string NEW_TRAILER)
+{
+    //film doesn t exist
+    if (v.validate_uniqueness(ID, get_films()) == true)
+        return false;
+
+    for (int i = 0; i < films.size(); i++)
+        if (films[i].get_id() == ID)
+        {
+            films[i].set_title(NEW_TITLE);
+            films[i].set_genre(NEW_GENRE);
+            films[i].set_year(NEW_YEAR);
+            films[i].set_trailer(NEW_TRAILER);
+            return true;
+        }
 }
 
 bool iequals(const string& a, const string& b)

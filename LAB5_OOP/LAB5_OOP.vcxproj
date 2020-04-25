@@ -153,6 +153,7 @@
     <ClCompile Include="LAB5_OOP.cpp" />
     <ClCompile Include="Repository.cpp" />
     <ClCompile Include="Validate.cpp" />
+    <ClCompile Include="WatchList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Film.h" />
     <ClInclude Include="Repository.h" />
     <ClInclude Include="Validate.h" />
+    <ClInclude Include="WatchList.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="filme.txt" />
