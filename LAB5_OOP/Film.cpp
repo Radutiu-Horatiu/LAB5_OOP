@@ -2,14 +2,7 @@
 
 using namespace std;
 
-Film::Film()
-{
-	title = "?";
-	genre = "?";
-	year = "?";
-	trailer = "?";
-	
-}
+Film::Film() {}
 
 Film::Film(string TITLE, string GENRE, string YEAR, string TRAILER, int ID)
 {

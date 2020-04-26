@@ -7,12 +7,11 @@ class Film
 {
 private:
 
-	string title;
-	string genre;
-	string year;
+	string title = "?";
+	string genre = "?";
+	string year = "?";
 	int number_likes = 0;
-	string trailer;
-
+	string trailer = "?";
 	int id = 0;
 
 public:
