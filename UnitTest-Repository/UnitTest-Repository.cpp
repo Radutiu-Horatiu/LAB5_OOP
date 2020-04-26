@@ -188,18 +188,54 @@ namespace UnitTestRepository
 
 			vector<Film> RetunredVectorFromRepo1;
 			vector<Film> RetunredVectorFromRepo2;
+			vector<Film> ReturnedVectorFromRepo_1_GENRES;
+			vector<Film> ReturnedVectorFromRepo_2_GENRES;
 
 			Assert::IsTrue(RetunredVectorFromRepo1.empty());
 			Assert::IsTrue(RetunredVectorFromRepo2.empty());
+			Assert::IsTrue(ReturnedVectorFromRepo_1_GENRES.empty());
+			Assert::IsTrue(ReturnedVectorFromRepo_2_GENRES.empty());
 
 			RetunredVectorFromRepo1 = repo_1.get_films();
 			RetunredVectorFromRepo2 = repo_2.get_films();
+			ReturnedVectorFromRepo_1_GENRES = repo_1.show_films_to_user("none");
+			ReturnedVectorFromRepo_2_GENRES = repo_2.show_films_to_user("none");
 
 			Assert::IsFalse(RetunredVectorFromRepo1.empty());
 			Assert::IsFalse(RetunredVectorFromRepo2.empty());
+			Assert::IsFalse(ReturnedVectorFromRepo_1_GENRES.empty());
+			Assert::IsFalse(ReturnedVectorFromRepo_2_GENRES.empty());
 
+
+			for (int i = 0; i < RetunredVectorFromRepo1.size(); i++)
+			{
+				Assert::AreEqual(RetunredVectorFromRepo1[i].get_id(), ReturnedVectorFromRepo_1_GENRES[i].get_id());
+				Assert::AreEqual(RetunredVectorFromRepo1[i].get_title(), ReturnedVectorFromRepo_1_GENRES[i].get_title());
+				Assert::AreEqual(RetunredVectorFromRepo1[i].get_trailer(), ReturnedVectorFromRepo_1_GENRES[i].get_trailer());
+				Assert::AreEqual(RetunredVectorFromRepo1[i].get_year(), ReturnedVectorFromRepo_1_GENRES[i].get_year());
+				Assert::AreEqual(RetunredVectorFromRepo1[i].get_number_likes(), ReturnedVectorFromRepo_1_GENRES[i].get_number_likes());
+				Assert::AreEqual(RetunredVectorFromRepo1[i].get_genre(), ReturnedVectorFromRepo_1_GENRES[i].get_genre());
+			}
+
+			for (int i = 0; i < RetunredVectorFromRepo2.size(); i++)
+			{
+				Assert::AreEqual(RetunredVectorFromRepo2[i].get_id(), ReturnedVectorFromRepo_2_GENRES[i].get_id());
+				Assert::AreEqual(RetunredVectorFromRepo2[i].get_title(), ReturnedVectorFromRepo_2_GENRES[i].get_title());
+				Assert::AreEqual(RetunredVectorFromRepo2[i].get_trailer(), ReturnedVectorFromRepo_2_GENRES[i].get_trailer());
+				Assert::AreEqual(RetunredVectorFromRepo2[i].get_year(), ReturnedVectorFromRepo_2_GENRES[i].get_year());
+				Assert::AreEqual(RetunredVectorFromRepo2[i].get_number_likes(), ReturnedVectorFromRepo_2_GENRES[i].get_number_likes());
+				Assert::AreEqual(RetunredVectorFromRepo2[i].get_genre(), ReturnedVectorFromRepo_2_GENRES[i].get_genre());
+			}
 			
-
+			for (int i = 0; i < RetunredVectorFromRepo1.size(); i++)
+			{
+				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_id(), ReturnedVectorFromRepo_2_GENRES[i].get_id());
+				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_title(), ReturnedVectorFromRepo_2_GENRES[i].get_title());
+				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_trailer(), ReturnedVectorFromRepo_2_GENRES[i].get_trailer());
+				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_year(), ReturnedVectorFromRepo_2_GENRES[i].get_year());
+				Assert::AreEqual(RetunredVectorFromRepo1[i].get_number_likes(), ReturnedVectorFromRepo_2_GENRES[i].get_number_likes());
+				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_genre(), ReturnedVectorFromRepo_2_GENRES[i].get_genre());
+			}
 		}
 	};
 }

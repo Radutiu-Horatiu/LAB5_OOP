@@ -84,7 +84,7 @@ public:
 	void open_link_in_browser(string LINK);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	/// <summary>	Query if the films vector is empty. </summary>
+	/// <summary>	Checks if the films vector is empty. </summary>
 	///
 	/// <remarks>	Pinko, 4/26/2020. </remarks>
 	///
