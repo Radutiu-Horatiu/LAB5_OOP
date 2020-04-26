@@ -199,7 +199,7 @@ namespace UnitTestRepository
 			RetunredVectorFromRepo1 = repo_1.get_films();
 			RetunredVectorFromRepo2 = repo_2.get_films();
 			ReturnedVectorFromRepo_1_GENRES = repo_1.show_films_to_user("none");
-			ReturnedVectorFromRepo_2_GENRES = repo_2.show_films_to_user("none");
+			ReturnedVectorFromRepo_2_GENRES = repo_2.show_films_to_user("Action");
 
 			Assert::IsFalse(RetunredVectorFromRepo1.empty());
 			Assert::IsFalse(RetunredVectorFromRepo2.empty());
@@ -227,15 +227,55 @@ namespace UnitTestRepository
 				Assert::AreEqual(RetunredVectorFromRepo2[i].get_genre(), ReturnedVectorFromRepo_2_GENRES[i].get_genre());
 			}
 			
+			Assert::IsTrue(RetunredVectorFromRepo1.size() == ReturnedVectorFromRepo_2_GENRES.size());
+
 			for (int i = 0; i < RetunredVectorFromRepo1.size(); i++)
+				for (int j = 0; j < ReturnedVectorFromRepo_2_GENRES.size(); j++)
 			{
-				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_id(), ReturnedVectorFromRepo_2_GENRES[i].get_id());
-				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_title(), ReturnedVectorFromRepo_2_GENRES[i].get_title());
-				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_trailer(), ReturnedVectorFromRepo_2_GENRES[i].get_trailer());
-				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_year(), ReturnedVectorFromRepo_2_GENRES[i].get_year());
-				Assert::AreEqual(RetunredVectorFromRepo1[i].get_number_likes(), ReturnedVectorFromRepo_2_GENRES[i].get_number_likes());
-				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_genre(), ReturnedVectorFromRepo_2_GENRES[i].get_genre());
+				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_id(), ReturnedVectorFromRepo_2_GENRES[j].get_id());
+				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_title(), ReturnedVectorFromRepo_2_GENRES[j].get_title());
+				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_trailer(), ReturnedVectorFromRepo_2_GENRES[j].get_trailer());
+				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_year(), ReturnedVectorFromRepo_2_GENRES[j].get_year());
+				Assert::AreEqual(RetunredVectorFromRepo1[i].get_number_likes(), ReturnedVectorFromRepo_2_GENRES[j].get_number_likes());
+				Assert::AreNotEqual(RetunredVectorFromRepo1[i].get_genre(), ReturnedVectorFromRepo_2_GENRES[j].get_genre());
 			}
+
+			ReturnedVectorFromRepo_1_GENRES = repo_1.show_films_to_user("Action");
+			ReturnedVectorFromRepo_2_GENRES = repo_2.show_films_to_user("none");
+
+			Assert::IsFalse(ReturnedVectorFromRepo_1_GENRES.size() == 3);
+			Assert::IsTrue(ReturnedVectorFromRepo_1_GENRES.size() == 1);
+			Assert::IsTrue(ReturnedVectorFromRepo_1_GENRES[0].get_id() == 219);
+			Assert::IsTrue(ReturnedVectorFromRepo_2_GENRES.size() == 3);
+
+			ReturnedVectorFromRepo_1_GENRES = repo_1.show_films_to_user("Drama");
+			ReturnedVectorFromRepo_2_GENRES = repo_2.show_films_to_user("thriller");
+
+			Assert::IsTrue(ReturnedVectorFromRepo_1_GENRES.size() == ReturnedVectorFromRepo_2_GENRES.size());
+
+			Assert::AreNotEqual(ReturnedVectorFromRepo_1_GENRES[0].get_id(), ReturnedVectorFromRepo_2_GENRES[0].get_id());
+			Assert::AreNotEqual(ReturnedVectorFromRepo_1_GENRES[0].get_title(), ReturnedVectorFromRepo_2_GENRES[0].get_title());
+			Assert::AreNotEqual(ReturnedVectorFromRepo_1_GENRES[0].get_trailer(), ReturnedVectorFromRepo_2_GENRES[0].get_trailer());
+			Assert::AreNotEqual(ReturnedVectorFromRepo_1_GENRES[0].get_year(), ReturnedVectorFromRepo_2_GENRES[0].get_year());
+			Assert::AreEqual(ReturnedVectorFromRepo_1_GENRES[0].get_number_likes(), ReturnedVectorFromRepo_2_GENRES[0].get_number_likes());
+			Assert::AreNotEqual(ReturnedVectorFromRepo_1_GENRES[0].get_genre(), ReturnedVectorFromRepo_2_GENRES[0].get_genre());
+
+
+			ReturnedVectorFromRepo_1_GENRES = repo_1.show_films_to_user("Sci-Fi");
+			ReturnedVectorFromRepo_2_GENRES = repo_2.show_films_to_user("horror");
+
+			Assert::IsFalse(ReturnedVectorFromRepo_1_GENRES.size() == ReturnedVectorFromRepo_2_GENRES.size());
+
+			for (int i = 0; i < ReturnedVectorFromRepo_1_GENRES.size(); i++)
+				for (int j = 0; j < ReturnedVectorFromRepo_2_GENRES.size(); j++)
+				{
+					Assert::AreNotEqual(ReturnedVectorFromRepo_1_GENRES[i].get_id(), ReturnedVectorFromRepo_2_GENRES[j].get_id());
+					Assert::AreNotEqual(ReturnedVectorFromRepo_1_GENRES[i].get_title(), ReturnedVectorFromRepo_2_GENRES[j].get_title());
+					Assert::AreNotEqual(ReturnedVectorFromRepo_1_GENRES[i].get_trailer(), ReturnedVectorFromRepo_2_GENRES[j].get_trailer());
+					Assert::AreNotEqual(ReturnedVectorFromRepo_1_GENRES[i].get_year(), ReturnedVectorFromRepo_2_GENRES[j].get_year());
+					Assert::AreEqual(ReturnedVectorFromRepo_1_GENRES[i].get_number_likes(), ReturnedVectorFromRepo_2_GENRES[j].get_number_likes());
+					Assert::AreNotEqual(ReturnedVectorFromRepo_1_GENRES[i].get_genre(), ReturnedVectorFromRepo_2_GENRES[j].get_genre());
+				}
 		}
 	};
 }
