@@ -19,13 +19,11 @@ public:
 	/// <remarks>	Horatiu, 4/25/2020. </remarks>
 	///
 	/// <returns>	The films. </returns>
-
 	vector <Film>& get_films() { return films; }
 
 	/// <summary>	Print films. </summary>
 	///
 	/// <remarks>	Horatiu, 4/25/2020. </remarks>
-
 	void print_films(vector <Film> films);
 
 	/// <summary>	Adds a film. </summary>

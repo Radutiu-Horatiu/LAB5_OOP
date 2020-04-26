@@ -4,7 +4,7 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace UnitTest
+namespace UnitTestFilm
 {
 	TEST_CLASS(FilmClass)
 	{
