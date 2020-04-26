@@ -204,3 +204,15 @@ void Repository::open_link_in_browser(string LINK)
 
     //cout << LINK << " Was opened!" << endl;
 }
+
+bool Repository::isEmpty()
+{
+    if (films.empty()) 
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
