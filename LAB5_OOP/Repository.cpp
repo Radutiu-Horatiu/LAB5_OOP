@@ -151,8 +151,8 @@ void Repository::write_file(vector <Film> v, string filename)
     fin.open(filename, ofstream::out | ofstream::trunc);
 
     for (int i = 0; i < v.size(); i++)
-        fin << v[i].get_id() << " " << v[i].get_title() << " " << v[i].get_genre() << " " << v[i].get_number_likes() << " " << v[i].get_year() << 
-        " " << v[i].get_trailer() << '\n';
+        fin << "|" << v[i].get_id() << "|" << v[i].get_title() << "|" << v[i].get_genre() << "|" << v[i].get_number_likes() << "|" << v[i].get_year() << 
+        "|" << v[i].get_trailer() << '|\n';
 
     fin.close();
 }
@@ -222,43 +222,54 @@ void Repository::read_file(vector <Film>& v, string file)
     {
         Film f;
 
-        myReadFile >> temp;
-        if (temp != "")
+        char text[1000];
+        myReadFile.getline(text,1000);
+        
+        string line = text;
+
+        if (line == "")
+            break;
+        
+        vector <int> indexes;
+        vector <string> elements;
+        string word;
+
+        for (int i = 0; i < line.length(); i++)
+            if (line[i] == '|')
+                indexes.push_back(i);
+   
+        int j = 0;
+        while (j < indexes.size() - 1)
         {
-            id = stoi(temp, &sz);
-            f.set_id(id);
+          
+            for (int i = indexes[j] + 1; i < indexes[j + 1]; i++)
+                word += line[i];
+
+            elements.push_back(word);
+
+            word = "";
+
+            j++;
         }
 
-        myReadFile >> title;
-        if (title != "")
-            f.set_title(title);
+ 
+        id = stoi(elements[0], &sz);
+        f.set_id(id);
 
-        myReadFile >> genre;
-        if (genre != "")
-            f.set_genre(genre);
+        f.set_title(elements[1]);
 
-        myReadFile >> temp;
-        if (temp != "")
-        {
-            number_likes = stoi(temp, &sz);
-            f.set_number_likes(number_likes);
-        }
+        f.set_genre(elements[2]);
 
-        myReadFile >> year;
-        if (year != "")
-            f.set_year(year);
+        number_likes = stoi(elements[3], &sz);
+        f.set_number_likes(number_likes);
 
-        myReadFile >> trailer;
-        if (trailer != "")
-            f.set_trailer(trailer);
+        f.set_year(elements[4]);
 
-        if (title != "")
-            v.push_back(f);
+        f.set_trailer(elements[5]);
+
+        v.push_back(f);
 
     }
-
-    if (v.size() > 0)
-        v.erase(v.end() - 1);
 
     myReadFile.close();
    

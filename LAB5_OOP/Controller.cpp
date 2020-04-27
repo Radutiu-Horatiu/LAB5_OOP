@@ -171,12 +171,16 @@ void Controller::user_show_films_by_genres()
 				cout << "\nSomething went wrong.\n";
 		}
 
-		cout << "Watch another trailer?\nY - yes, N - no\nAnswer: ";
-		string answer2;
-		cin >> answer2;
+		if (i != result.size() - 1)
+		{
+			cout << "Watch another trailer?\nY - yes, N - no\nAnswer: ";
+			string answer2;
+			cin >> answer2;
 
-		if (answer2 == "n" or answer2 == "N")
-			break;
+			if (answer2 == "n" or answer2 == "N")
+				break;
+		}
+		
 	}
 
 }
