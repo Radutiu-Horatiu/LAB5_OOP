@@ -3,6 +3,7 @@
 #include "../LAB5_OOP/Repository.h"
 #include "../LAB5_OOP/Film.h"
 #include "../LAB5_OOP/Validate.h"
+#include "../LAB5_OOP/WatchList.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -277,5 +278,35 @@ namespace UnitTestRepository
 					Assert::AreNotEqual(ReturnedVectorFromRepo_1_GENRES[i].get_genre(), ReturnedVectorFromRepo_2_GENRES[j].get_genre());
 				}
 		}
+
+		TEST_METHOD(GetAndFindFilmById)
+		{
+			Repository repo_1;
+
+			Assert::IsTrue(repo_1.isEmpty());
+
+			repo_1.add_film("Example1", "Action", "2012", "www.example1-link.com/jhfiawfa", 219);
+			repo_1.add_film("Example2", "Drama", "1879", "www.example2-link.com/asgh38adf", 196);
+			repo_1.add_film("Example3", "Sci-Fi", "2014", "www.example3-link.com/hsaf832uhjid832", 2319);
+
+			Assert::IsFalse(repo_1.isEmpty());
+
+			Film film1 = repo_1.get_film_by_id(219);
+			Film film2 = repo_1.get_film_by_id(196);
+			Film film3 = repo_1.get_film_by_id(2319);
+
+			Assert::IsTrue(repo_1.get_films()[0] == film1);
+			Assert::IsTrue(repo_1.get_films()[1] == film2);
+			Assert::IsTrue(repo_1.get_films()[2] == film3);
+
+			Assert::IsTrue(repo_1.find_film_by_id(film1.get_id()));
+			Assert::IsTrue(repo_1.find_film_by_id(film2.get_id()));
+			Assert::IsTrue(repo_1.find_film_by_id(film3.get_id()));
+		}
 	};
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// End of UnitTest-Repository.cpp
+////////////////////////////////////////////////////////////////////////////////////////////////////
+

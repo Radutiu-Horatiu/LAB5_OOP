@@ -20,12 +20,16 @@ public:
 	/// <returns>	The films. </returns>
 	vector <Film>& get_films() { return films; }
 
+
+
 	/// <summary>	Print films. </summary>
 	///
 	/// <remarks>	Horatiu, 4/25/2020. </remarks>
 	void print_films(vector <Film> films);
 
-	/// <summary>	Adds a film. </summary>
+
+
+	/// <summary>	Adds a film by given parameters. </summary>
 	///
 	/// <remarks>	Horatiu, 4/25/2020. </remarks>
 	///
@@ -38,6 +42,21 @@ public:
 	/// <returns>	True if it succeeds, false if it fails. </returns>
 	bool add_film(string title, string genre, string year, string trailer, int id);
 
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>	Adds a film using Films copy constructor. </summary>
+	///
+	/// <remarks>	Pinko, 4/27/2020. </remarks>
+	///
+	/// <param name="film">	The film. </param>
+	///
+	/// <returns>	True if it succeeds, false if it fails. </returns>
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	bool add_film(Film& film);
+
+
+
 	/// <summary>	Removes the film described by ID. </summary>
 	///
 	/// <remarks>	Horatiu, 4/25/2020. </remarks>
@@ -46,6 +65,8 @@ public:
 	///
 	/// <returns>	True if it succeeds, false if it fails. </returns>
 	bool remove_film(int id);
+
+
 
 	/// <summary>	Updates the film. </summary>
 	///
@@ -60,6 +81,8 @@ public:
 	/// <returns>	True if it succeeds, false if it fails. </returns>
 	bool update_film(int id, string new_title, string new_genre, string new_year, string new_trailer);
 
+
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>    Shows all the films (with the given Genre) to the user.
 	///                If Genre is not valid, the function returns the whole list of films.
@@ -73,6 +96,8 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	vector <Film> show_films_to_user(string genre);
 
+
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>    Opens a given link in the default browser. </summary>
 	///
@@ -81,6 +106,8 @@ public:
 	/// <param name="LINK">    The link as a string. </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void open_link_in_browser(string link);
+
+
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Checks if the films vector is empty. </summary>
@@ -91,6 +118,8 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	bool isEmpty();
 
+
+
 	/// <summary>	Searches for the first film by identifier. </summary>
 	///
 	/// <remarks>	Horatiu, 4/27/2020. </remarks>
@@ -99,6 +128,8 @@ public:
 	///
 	/// <returns>	True if it succeeds, false if it fails. </returns>
 	bool find_film_by_id(int id);
+
+
 
 	/// <summary>	Gets film by identifier. </summary>
 	///
@@ -109,14 +140,35 @@ public:
 	/// <returns>	The film by identifier. </returns>
 	Film get_film_by_id(int id);
 
+
+
 	//reading and writing within a file
 	void write_file(vector <Film> v, string filename);
 	void write_file(vector <int> v, string filename);
 	void read_file(vector <Film>& v, string file);
 	void read_file(vector <int>& v, string file);
 
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>	Default constructor. </summary>
+	///
+	/// <remarks>	Pinko, 4/27/2020. </remarks>
+	////////////////////////////////////////////////////////////////////////////////////////////////////
 	Repository();
+
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// <summary>	Destructor. </summary>
+	///
+	/// <remarks>	Pinko, 4/27/2020. </remarks>
+	////////////////////////////////////////////////////////////////////////////////////////////////////
 	~Repository();
 
 };
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// End of Repository.h
+////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -4,6 +4,18 @@
 using namespace std;
 
 
+bool WatchList::isEmpty()
+{
+    if (watchlist.empty())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 bool WatchList::remove_film_from_watchlist(int ID)
 {
     if (!watchlist.empty())
@@ -50,3 +62,8 @@ bool WatchList::find_film_by_id(int id)
 
     return false;
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// End of WatchList.cpp
+////////////////////////////////////////////////////////////////////////////////////////////////////
+

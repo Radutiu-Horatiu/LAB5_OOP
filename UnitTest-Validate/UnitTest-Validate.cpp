@@ -2,7 +2,8 @@
 #include "CppUnitTest.h"
 #include "../LAB5_OOP/Film.h"
 #include "../LAB5_OOP/Validate.h"
-#include <iostream>
+#include "../LAB5_OOP/Repository.h"
+#include "../LAB5_OOP/WatchList.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -70,7 +71,13 @@ namespace UnitTestValidate
 		{
 			Validate v;
 
-			vector<Film> TestFilmContainer;
+			WatchList TesterWatchList;
+			Repository TesterRepository;
+
+			Assert::IsTrue(TesterRepository.isEmpty());
+			Assert::IsTrue(TesterWatchList.isEmpty());
+
+			vector<int> AllIdVector;
 
 			Film film_1("Interstellar", "Sci-Fi", "2014", "www.imdb.com/video/vi1586278169?playlistId=tt0816692&ref_=tt_ov_vi", 175);
 			Film film_2("Joker", "Drama", "2019", "www.imdb.com/video/vi2883960089?ref_=ttvi_vi_imdb_2", 25735);
@@ -88,31 +95,83 @@ namespace UnitTestValidate
 			Film film_14("Example5", "Horror", "2007", "www.example5-link.com/gh2389gygwhjd982", 1475);
 			Film film_15("Example6", "Thriller", "2002", "www.example6-link.com/gh238g928G@$GW", 1531357);
 
-			TestFilmContainer.push_back(film_1);
-			TestFilmContainer.push_back(film_2);
-			TestFilmContainer.push_back(film_3);
-			TestFilmContainer.push_back(film_4);
-			TestFilmContainer.push_back(film_5);
-			TestFilmContainer.push_back(film_6);
-			TestFilmContainer.push_back(film_7);
-			TestFilmContainer.push_back(film_8);
-			TestFilmContainer.push_back(film_9);
-			TestFilmContainer.push_back(film_10);
-			TestFilmContainer.push_back(film_11);
-			TestFilmContainer.push_back(film_12);
-			TestFilmContainer.push_back(film_13);
-			TestFilmContainer.push_back(film_14);
-			TestFilmContainer.push_back(film_15);
+			int film_1_id(175);
+			int film_2_id(25735);
+			int film_3_id(3753755);
+			int film_4_id(4225);
+			int film_5_id(55243);
+			int film_6_id(6752);
+			int film_7_id(77352);
+			int film_8_id(824);
+			int film_9_id(972);
+			int film_10_id(10547);
+			int film_11_id(11275);
+			int film_12_id(12275);
+			int film_13_id(130);
+			int film_14_id(1475);
+			int film_15_id(1531357);
 
-			for (int i = 0; i < TestFilmContainer.size(); i++)
+			TesterRepository.add_film(film_1);
+			TesterRepository.add_film(film_2);
+			TesterRepository.add_film(film_3);
+			TesterRepository.add_film(film_4);
+			TesterRepository.add_film(film_5);
+			TesterRepository.add_film(film_6);
+			TesterRepository.add_film(film_7);
+			TesterRepository.add_film(film_8);
+			TesterRepository.add_film(film_9);
+			TesterRepository.add_film(film_10);
+			TesterRepository.add_film(film_11);
+			TesterRepository.add_film(film_12);
+			TesterRepository.add_film(film_13);
+			TesterRepository.add_film(film_14);
+			TesterRepository.add_film(film_15);
+
+			AllIdVector.push_back(film_1_id);
+			AllIdVector.push_back(film_2_id);
+			AllIdVector.push_back(film_3_id);
+			AllIdVector.push_back(film_4_id);
+			AllIdVector.push_back(film_5_id);
+			AllIdVector.push_back(film_6_id);
+			AllIdVector.push_back(film_7_id);
+			AllIdVector.push_back(film_8_id);
+			AllIdVector.push_back(film_9_id);
+			AllIdVector.push_back(film_10_id);
+			AllIdVector.push_back(film_11_id);
+			AllIdVector.push_back(film_12_id);
+			AllIdVector.push_back(film_13_id);
+			AllIdVector.push_back(film_14_id);
+			AllIdVector.push_back(film_15_id);
+
+			for (int i = 0; i < 15; i++)
 			{
-				//Assert::IsFalse(v.validate_uniqueness(TestFilmContainer[i].get_id(), TestFilmContainer));
+				TesterWatchList.add_film_to_watchlist(AllIdVector[i]);
+			}
+
+			for (int i = 0; i < AllIdVector.size(); i++)
+			{
+				Assert::IsFalse(v.validate_uniqueness(AllIdVector[i], TesterWatchList));
 			}	
 
-			for (int i = 0; i < TestFilmContainer.size(); i++)
+			for (int i = 0; i < AllIdVector.size(); i++)
 			{
-				//Assert::IsTrue(v.validate_uniqueness(i, TestFilmContainer));
+				Assert::IsTrue(v.validate_uniqueness(i, TesterWatchList));
+			}
+
+			for (int i = 0; i < AllIdVector.size(); i++)
+			{
+				Assert::IsFalse(v.validate_uniqueness(AllIdVector[i], TesterRepository));
+			}
+
+			for (int i = 0; i < AllIdVector.size(); i++)
+			{
+				Assert::IsTrue(v.validate_uniqueness(i, TesterRepository));
 			}
 		}
 	};
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// End of UnitTest-Validate.cpp
+////////////////////////////////////////////////////////////////////////////////////////////////////
+

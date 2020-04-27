@@ -36,6 +36,21 @@ bool Repository::add_film(string title, string genre, string year, string traile
 	return true;
 }
 
+bool Repository::add_film(Film& film)
+{
+
+    //checking if everything is good to go
+    if (!(v.validate_string(film.get_genre()) == true and
+        v.validate_int(film.get_year()) == true and v.validate_uniqueness(film.get_id(), *this) == true))
+        return false;
+
+    Film new_film(film);
+
+    films.push_back(new_film);
+
+    return true;
+}
+
 bool Repository::remove_film(int id)
 {
     //film doesn t exist
@@ -293,3 +308,8 @@ bool Repository::isEmpty()
         return false;
     }
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// End of Repository.cpp
+////////////////////////////////////////////////////////////////////////////////////////////////////
+

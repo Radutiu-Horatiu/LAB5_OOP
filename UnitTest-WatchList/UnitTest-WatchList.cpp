@@ -3,6 +3,7 @@
 #include "../LAB5_OOP/Film.h"
 #include "../LAB5_OOP/Validate.h"
 #include "../LAB5_OOP/WatchList.h"
+#include "../LAB5_OOP/Repository.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -16,48 +17,50 @@ namespace UnitTestWatchList
 		{
 			WatchList TesterWatchList;
 
-			vector<Film> TestFilmContainer;
+			vector<int> TestFilmIdContainer;
 
-			Film film_1("Interstellar", "Sci-Fi", "2014", "www.imdb.com/video/vi1586278169?playlistId=tt0816692&ref_=tt_ov_vi", 1);
-			Film film_2("Joker", "Drama", "2019", "www.imdb.com/video/vi2883960089?ref_=ttvi_vi_imdb_2", 2);
-			Film film_3("The Godfather", "Drama", "1972", "www.imdb.com/video/vi1348706585?ref_=ttvi_vi_imdb_1", 3);
-			Film film_4("The Dark Knight", "Action", "2008", "www.imdb.com/video/vi324468761?ref_=ttvi_vi_imdb_1", 4);
-			Film film_5("The Lord of the Rings: The Return of the King", "Adventure", "2003", "www.imdb.com/video/vi2073101337?ref_=ttvi_vi_imdb_1", 5);
-			Film film_6("Fight Club", "Drama", "1999", "www.imdb.com/video/vi781228825", 6);
-			Film film_7("Forrest Gump", "Romance", "1994", "www.imdb.com/video/vi3567517977?ref_=ttvi_vi_imdb_1", 7);
-			Film film_8("Example1", "Action", "2012", "www.example1-link.com/jhfiawfa", 8);
-			Film film_9("Example2", "Horror", "2015", "www.example2-link.com/asfaw", 9);
-			Film film_10("Example1", "Action", "2012", "www.example1-link.com/jhfiawfa", 10);
-			Film film_11("Example2", "Drama", "1879", "www.example2-link.com/asgh38adf", 11);
-			Film film_12("Example3", "Sci-Fi", "2014", "www.example3-link.com/hsaf832uhjid832", 12);
-			Film film_13("Example4", "Horror", "2015", "www.example4-link.com/g43rgsfgw", 13);
-			Film film_14("Example5", "Horror", "2007", "www.example5-link.com/gh2389gygwhjd982", 14);
-			Film film_15("Example6", "Thriller", "2002", "www.example6-link.com/gh238g928G@$GW", 15);
+			Assert::IsTrue(TesterWatchList.get_watchlist().empty());
 
-			TestFilmContainer.push_back(film_1);
-			TestFilmContainer.push_back(film_2);
-			TestFilmContainer.push_back(film_3);
-			TestFilmContainer.push_back(film_4);
-			TestFilmContainer.push_back(film_5);
-			TestFilmContainer.push_back(film_6);
-			TestFilmContainer.push_back(film_7);
-			TestFilmContainer.push_back(film_8);
-			TestFilmContainer.push_back(film_9);
-			TestFilmContainer.push_back(film_10);
-			TestFilmContainer.push_back(film_11);
-			TestFilmContainer.push_back(film_12);
-			TestFilmContainer.push_back(film_13);
-			TestFilmContainer.push_back(film_14);
-			TestFilmContainer.push_back(film_15);
+			int film_1_id(1);
+			int film_2_id(2);
+			int film_3_id(3);
+			int film_4_id(4);
+			int film_5_id(5);
+			int film_6_id(6);
+			int film_7_id(7);
+			int film_8_id(8);
+			int film_9_id(9);
+			int film_10_id(10);
+			int film_11_id(11);
+			int film_12_id(12);
+			int film_13_id(13);
+			int film_14_id(14);
+			int film_15_id(15);
 
-			for (int i = 0; i < TestFilmContainer.size(); i++)
+			TestFilmIdContainer.push_back(film_1_id);
+			TestFilmIdContainer.push_back(film_2_id);
+			TestFilmIdContainer.push_back(film_3_id);
+			TestFilmIdContainer.push_back(film_4_id);
+			TestFilmIdContainer.push_back(film_5_id);
+			TestFilmIdContainer.push_back(film_6_id);
+			TestFilmIdContainer.push_back(film_7_id);
+			TestFilmIdContainer.push_back(film_8_id);
+			TestFilmIdContainer.push_back(film_9_id);
+			TestFilmIdContainer.push_back(film_10_id);
+			TestFilmIdContainer.push_back(film_11_id);
+			TestFilmIdContainer.push_back(film_12_id);
+			TestFilmIdContainer.push_back(film_13_id);
+			TestFilmIdContainer.push_back(film_14_id);
+			TestFilmIdContainer.push_back(film_15_id);
+
+			for (int i = 0; i < TestFilmIdContainer.size(); i++)
 			{
-				//Assert::IsTrue(TesterWatchList.add_film_to_watchlist(TestFilmContainer[i]));
+				Assert::IsTrue(TesterWatchList.add_film_to_watchlist(TestFilmIdContainer[i]));
 			}
 
-			for (int i = 0; i < TestFilmContainer.size(); i++)
+			for (int i = 0; i < TestFilmIdContainer.size(); i++)
 			{
-				//Assert::IsFalse(TesterWatchList.add_film_to_watchlist(TestFilmContainer[i]));
+				Assert::IsFalse(TesterWatchList.add_film_to_watchlist(TestFilmIdContainer[i]));
 			}
 		}
 
@@ -65,60 +68,55 @@ namespace UnitTestWatchList
 		{
 			WatchList TesterWatchList;
 
-			vector<Film> TestFilmContainer;
-			vector<Film> GetWatchListTesterVector;
+			vector<int> TestFilmIdContainer;
+			vector<int> GetWatchListTesterVector;
 
 			Assert::IsTrue(TesterWatchList.get_watchlist().empty());
 
-			Film film_1("Interstellar", "Sci-Fi", "2014", "www.imdb.com/video/vi1586278169?playlistId=tt0816692&ref_=tt_ov_vi", 1);
-			Film film_2("Joker", "Drama", "2019", "www.imdb.com/video/vi2883960089?ref_=ttvi_vi_imdb_2", 2);
-			Film film_3("The Godfather", "Drama", "1972", "www.imdb.com/video/vi1348706585?ref_=ttvi_vi_imdb_1", 3);
-			Film film_4("The Dark Knight", "Action", "2008", "www.imdb.com/video/vi324468761?ref_=ttvi_vi_imdb_1", 4);
-			Film film_5("The Lord of the Rings: The Return of the King", "Adventure", "2003", "www.imdb.com/video/vi2073101337?ref_=ttvi_vi_imdb_1", 5);
-			Film film_6("Fight Club", "Drama", "1999", "www.imdb.com/video/vi781228825", 6);
-			Film film_7("Forrest Gump", "Romance", "1994", "www.imdb.com/video/vi3567517977?ref_=ttvi_vi_imdb_1", 7);
-			Film film_8("Example1", "Action", "2012", "www.example1-link.com/jhfiawfa", 8);
-			Film film_9("Example2", "Horror", "2015", "www.example2-link.com/asfaw", 9);
-			Film film_10("Example1", "Action", "2012", "www.example1-link.com/jhfiawfa", 10);
-			Film film_11("Example2", "Drama", "1879", "www.example2-link.com/asgh38adf", 11);
-			Film film_12("Example3", "Sci-Fi", "2014", "www.example3-link.com/hsaf832uhjid832", 12);
-			Film film_13("Example4", "Horror", "2015", "www.example4-link.com/g43rgsfgw", 13);
-			Film film_14("Example5", "Horror", "2007", "www.example5-link.com/gh2389gygwhjd982", 14);
-			Film film_15("Example6", "Thriller", "2002", "www.example6-link.com/gh238g928G@$GW", 15);
+			int film_1_id(1);
+			int film_2_id(2);
+			int film_3_id(3);
+			int film_4_id(4);
+			int film_5_id(5);
+			int film_6_id(6);
+			int film_7_id(7);
+			int film_8_id(8);
+			int film_9_id(9);
+			int film_10_id(10);
+			int film_11_id(11);
+			int film_12_id(12);
+			int film_13_id(13);
+			int film_14_id(14);
+			int film_15_id(15);
 
-			TestFilmContainer.push_back(film_1);
-			TestFilmContainer.push_back(film_2);
-			TestFilmContainer.push_back(film_3);
-			TestFilmContainer.push_back(film_4);
-			TestFilmContainer.push_back(film_5);
-			TestFilmContainer.push_back(film_6);
-			TestFilmContainer.push_back(film_7);
-			TestFilmContainer.push_back(film_8);
-			TestFilmContainer.push_back(film_9);
-			TestFilmContainer.push_back(film_10);
-			TestFilmContainer.push_back(film_11);
-			TestFilmContainer.push_back(film_12);
-			TestFilmContainer.push_back(film_13);
-			TestFilmContainer.push_back(film_14);
-			TestFilmContainer.push_back(film_15);
+			TestFilmIdContainer.push_back(film_1_id);
+			TestFilmIdContainer.push_back(film_2_id);
+			TestFilmIdContainer.push_back(film_3_id);
+			TestFilmIdContainer.push_back(film_4_id);
+			TestFilmIdContainer.push_back(film_5_id);
+			TestFilmIdContainer.push_back(film_6_id);
+			TestFilmIdContainer.push_back(film_7_id);
+			TestFilmIdContainer.push_back(film_8_id);
+			TestFilmIdContainer.push_back(film_9_id);
+			TestFilmIdContainer.push_back(film_10_id);
+			TestFilmIdContainer.push_back(film_11_id);
+			TestFilmIdContainer.push_back(film_12_id);
+			TestFilmIdContainer.push_back(film_13_id);
+			TestFilmIdContainer.push_back(film_14_id);
+			TestFilmIdContainer.push_back(film_15_id);
 
-			for (int i = 0; i < TestFilmContainer.size(); i++)
+			for (int i = 0; i < TestFilmIdContainer.size(); i++)
 			{
-				//Assert::IsTrue(TesterWatchList.add_film_to_watchlist(TestFilmContainer[i]));
+				Assert::IsTrue(TesterWatchList.add_film_to_watchlist(TestFilmIdContainer[i]));
 			}
 
 			GetWatchListTesterVector = TesterWatchList.get_watchlist();
 
-			Assert::IsTrue(TestFilmContainer.size() == GetWatchListTesterVector.size());
+			Assert::IsTrue(TestFilmIdContainer.size() == GetWatchListTesterVector.size());
 
 			for (int i = 0; i < GetWatchListTesterVector.size(); i++)
 			{
-				Assert::AreEqual(TestFilmContainer[i].get_id(), GetWatchListTesterVector[i].get_id());
-				Assert::AreEqual(TestFilmContainer[i].get_title(), GetWatchListTesterVector[i].get_title());
-				Assert::AreEqual(TestFilmContainer[i].get_trailer(), GetWatchListTesterVector[i].get_trailer());
-				Assert::AreEqual(TestFilmContainer[i].get_year(), GetWatchListTesterVector[i].get_year());
-				Assert::AreEqual(TestFilmContainer[i].get_number_likes(), GetWatchListTesterVector[i].get_number_likes());
-				Assert::AreEqual(TestFilmContainer[i].get_genre(), GetWatchListTesterVector[i].get_genre());
+				Assert::AreEqual(TestFilmIdContainer[i], GetWatchListTesterVector[i]);
 			}
 
 		}
@@ -127,61 +125,118 @@ namespace UnitTestWatchList
 		{
 			WatchList TesterWatchList;
 
-			vector<Film> TestFilmContainer;
+			vector<int> TestFilmIdContainer;
 
 			Assert::IsFalse(TesterWatchList.remove_film_from_watchlist(0));
 
-			Film film_1("Interstellar", "Sci-Fi", "2014", "www.imdb.com/video/vi1586278169?playlistId=tt0816692&ref_=tt_ov_vi", 14);
-			Film film_2("Joker", "Drama", "2019", "www.imdb.com/video/vi2883960089?ref_=ttvi_vi_imdb_2", 13);
-			Film film_3("The Godfather", "Drama", "1972", "www.imdb.com/video/vi1348706585?ref_=ttvi_vi_imdb_1", 12);
-			Film film_4("The Dark Knight", "Action", "2008", "www.imdb.com/video/vi324468761?ref_=ttvi_vi_imdb_1", 11);
-			Film film_5("The Lord of the Rings: The Return of the King", "Adventure", "2003", "www.imdb.com/video/vi2073101337?ref_=ttvi_vi_imdb_1", 10);
-			Film film_6("Fight Club", "Drama", "1999", "www.imdb.com/video/vi781228825", 9);
-			Film film_7("Forrest Gump", "Romance", "1994", "www.imdb.com/video/vi3567517977?ref_=ttvi_vi_imdb_1", 8);
-			Film film_8("Example1", "Action", "2012", "www.example1-link.com/jhfiawfa", 7);
-			Film film_9("Example2", "Horror", "2015", "www.example2-link.com/asfaw", 6);
-			Film film_10("Example1", "Action", "2012", "www.example1-link.com/jhfiawfa", 5);
-			Film film_11("Example2", "Drama", "1879", "www.example2-link.com/asgh38adf", 4);
-			Film film_12("Example3", "Sci-Fi", "2014", "www.example3-link.com/hsaf832uhjid832", 3);
-			Film film_13("Example4", "Horror", "2015", "www.example4-link.com/g43rgsfgw", 2);
-			Film film_14("Example5", "Horror", "2007", "www.example5-link.com/gh2389gygwhjd982", 1);
-			Film film_15("Example6", "Thriller", "2002", "www.example6-link.com/gh238g928G@$GW", 0);
+			int film_1_id(14);
+			int film_2_id(13);
+			int film_3_id(12);
+			int film_4_id(11);
+			int film_5_id(10);
+			int film_6_id(9);
+			int film_7_id(8);
+			int film_8_id(7);
+			int film_9_id(6);
+			int film_10_id(5);
+			int film_11_id(4);
+			int film_12_id(3);
+			int film_13_id(2);
+			int film_14_id(1);
+			int film_15_id(0);
 
-			TestFilmContainer.push_back(film_1);
-			TestFilmContainer.push_back(film_2);
-			TestFilmContainer.push_back(film_3);
-			TestFilmContainer.push_back(film_4);
-			TestFilmContainer.push_back(film_5);
-			TestFilmContainer.push_back(film_6);
-			TestFilmContainer.push_back(film_7);
-			TestFilmContainer.push_back(film_8);
-			TestFilmContainer.push_back(film_9);
-			TestFilmContainer.push_back(film_10);
-			TestFilmContainer.push_back(film_11);
-			TestFilmContainer.push_back(film_12);
-			TestFilmContainer.push_back(film_13);
-			TestFilmContainer.push_back(film_14);
-			TestFilmContainer.push_back(film_15);
+			TestFilmIdContainer.push_back(film_1_id);
+			TestFilmIdContainer.push_back(film_2_id);
+			TestFilmIdContainer.push_back(film_3_id);
+			TestFilmIdContainer.push_back(film_4_id);
+			TestFilmIdContainer.push_back(film_5_id);
+			TestFilmIdContainer.push_back(film_6_id);
+			TestFilmIdContainer.push_back(film_7_id);
+			TestFilmIdContainer.push_back(film_8_id);
+			TestFilmIdContainer.push_back(film_9_id);
+			TestFilmIdContainer.push_back(film_10_id);
+			TestFilmIdContainer.push_back(film_11_id);
+			TestFilmIdContainer.push_back(film_12_id);
+			TestFilmIdContainer.push_back(film_13_id);
+			TestFilmIdContainer.push_back(film_14_id);
+			TestFilmIdContainer.push_back(film_15_id);
 
-			for (int i = 0; i < TestFilmContainer.size(); i++)
+			for (int i = 0; i < TestFilmIdContainer.size(); i++)
 			{
-				//Assert::IsTrue(TesterWatchList.add_film_to_watchlist(TestFilmContainer[i]));
+				Assert::IsTrue(TesterWatchList.add_film_to_watchlist(TestFilmIdContainer[i]));
 			}
 
-			for (int i = 0; i < TestFilmContainer.size(); i++)
+			for (int i = 0; i < TestFilmIdContainer.size(); i++)
 			{
 				if (i == 0)
-					Assert::IsTrue(TesterWatchList.get_watchlist().size() == TestFilmContainer.size());
+					Assert::IsTrue(TesterWatchList.get_watchlist().size() == TestFilmIdContainer.size());
 				else
-					Assert::IsFalse(TesterWatchList.get_watchlist().size() == TestFilmContainer.size());
+					Assert::IsFalse(TesterWatchList.get_watchlist().size() == TestFilmIdContainer.size());
 
 				Assert::IsTrue(TesterWatchList.remove_film_from_watchlist(i));
-				Assert::IsTrue(TesterWatchList.get_watchlist().size() == TestFilmContainer.size() - i - 1);
+				Assert::IsTrue(TesterWatchList.get_watchlist().size() == TestFilmIdContainer.size() - i - 1);
 
-				if (i == TestFilmContainer.size() - 1)
+				if (i == TestFilmIdContainer.size() - 1)
 					Assert::IsTrue(TesterWatchList.get_watchlist().empty());
+			}
+
+		}
+
+		TEST_METHOD(FindFilmById)
+		{
+			WatchList TesterWatchList;
+
+			vector<int> TestFilmIdContainer;
+
+			Assert::IsTrue(TesterWatchList.get_watchlist().empty());
+
+			int film_1_id(14);
+			int film_2_id(13);
+			int film_3_id(12);
+			int film_4_id(11);
+			int film_5_id(10);
+			int film_6_id(9);
+			int film_7_id(8);
+			int film_8_id(7);
+			int film_9_id(6);
+			int film_10_id(5);
+			int film_11_id(4);
+			int film_12_id(3);
+			int film_13_id(2);
+			int film_14_id(1);
+			int film_15_id(0);
+
+			TestFilmIdContainer.push_back(film_1_id);
+			TestFilmIdContainer.push_back(film_2_id);
+			TestFilmIdContainer.push_back(film_3_id);
+			TestFilmIdContainer.push_back(film_4_id);
+			TestFilmIdContainer.push_back(film_5_id);
+			TestFilmIdContainer.push_back(film_6_id);
+			TestFilmIdContainer.push_back(film_7_id);
+			TestFilmIdContainer.push_back(film_8_id);
+			TestFilmIdContainer.push_back(film_9_id);
+			TestFilmIdContainer.push_back(film_10_id);
+			TestFilmIdContainer.push_back(film_11_id);
+			TestFilmIdContainer.push_back(film_12_id);
+			TestFilmIdContainer.push_back(film_13_id);
+			TestFilmIdContainer.push_back(film_14_id);
+			TestFilmIdContainer.push_back(film_15_id);
+
+			for (int i = 0; i < TestFilmIdContainer.size(); i++)
+			{
+				Assert::IsTrue(TesterWatchList.add_film_to_watchlist(TestFilmIdContainer[i]));
+			}
+
+			for (int i = 0; i < TesterWatchList.get_watchlist().size(); i++)
+			{
+				Assert::IsTrue(TesterWatchList.find_film_by_id(i));
 			}
 
 		}
 	};
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// End of UnitTest-WatchList.cpp
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
