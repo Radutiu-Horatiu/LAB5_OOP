@@ -37,7 +37,7 @@ public:
 	/// <param name="ID">	  	The identifier. </param>
 	///
 	/// <returns>	True if it succeeds, false if it fails. </returns>
-	bool add_film(string TITLE, string GENRE, string YEAR, string TRAILER, int ID);
+	bool add_film(string title, string genre, string year, string trailer, int id);
 
 	/// <summary>	Removes the film described by ID. </summary>
 	///
@@ -46,7 +46,7 @@ public:
 	/// <param name="ID">	The identifier. </param>
 	///
 	/// <returns>	True if it succeeds, false if it fails. </returns>
-	bool remove_film(int ID);
+	bool remove_film(int id);
 
 	/// <summary>	Updates the film. </summary>
 	///
@@ -59,7 +59,7 @@ public:
 	/// <param name="NEW_TRAILER">	The new trailer. </param>
 	///
 	/// <returns>	True if it succeeds, false if it fails. </returns>
-	bool update_film(int ID, string NEW_TITLE, string NEW_GENRE, string NEW_YEAR, string NEW_TRAILER);
+	bool update_film(int id, string new_title, string new_genre, string new_year, string new_trailer);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>    Shows all the films (with the given Genre) to the user.
@@ -72,7 +72,7 @@ public:
 	///
 	/// <returns>    A vector of the found results. </returns>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	vector <Film> show_films_to_user(string GENRE);
+	vector <Film> show_films_to_user(string genre);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>    Opens a given link in the default browser. </summary>
@@ -81,7 +81,7 @@ public:
 	///
 	/// <param name="LINK">    The link as a string. </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	void open_link_in_browser(string LINK);
+	void open_link_in_browser(string link);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Checks if the films vector is empty. </summary>

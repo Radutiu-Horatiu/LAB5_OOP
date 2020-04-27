@@ -28,7 +28,7 @@ bool Validate::validate_string(string s)
     return false;
 }
 
-bool Validate::validate_uniqueness(int id_to_validate, vector <Film> films)
+bool Validate::validate_uniqueness(int id_to_validate, vector <Film>& films)
 {
     //checks if the film already exists
     for (int i = 0; i < films.size(); i++)

@@ -36,7 +36,16 @@ public:
 
 	Film();
 
-	Film(string TITLE, string GENRE, string YEAR, string TRAILER, int ID);
+	/// <summary>	Constructor. </summary>
+	///
+	/// <remarks>	Horatiu, 4/27/2020. </remarks>
+	///
+	/// <param name="TITLE">  	The title. </param>
+	/// <param name="GENRE">  	The genre. </param>
+	/// <param name="YEAR">   	The year of appearance. </param>
+	/// <param name="TRAILER">	The trailer. </param>
+	/// <param name="ID">	  	The identifier. </param>
+	Film(string title, string genre, string year, string trailer, int id);
 
 	~Film();
 };

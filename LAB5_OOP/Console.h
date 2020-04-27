@@ -2,9 +2,11 @@
 #include "Controller.h"
 using namespace std;
 
-class Console:public Controller
+class Console
 {
 private:
+
+	Controller ctrl;
 
 public:
 

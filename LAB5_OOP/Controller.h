@@ -4,9 +4,12 @@
 
 using namespace std;
 
-class Controller:public Repository, public WatchList
+class Controller
 {
 private:
+
+	Repository repo;
+	WatchList watchlist;
 
 public:
 	Controller();

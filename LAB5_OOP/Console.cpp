@@ -15,9 +15,6 @@ Console::~Console()
 void Console::show_menu()
 {
 
-	Repository::read_file(Repository::get_films(), "filme.txt");
-	Repository::read_file(WatchList::get_watchlist(), "watchlist.txt");
-
 	string option = " ";
 
 	while (option != "0")
@@ -65,15 +62,15 @@ void Console::show_admin_menu()
 
 	if (opt == "1")
 	{
-		Controller::admin_add_film_to_repository();
+		ctrl.admin_add_film_to_repository();
 	}
 	else if (opt == "2")
 	{
-		Controller::admin_delete_film_from_repository();
+		ctrl.admin_delete_film_from_repository();
 	}
 	else if (opt == "3")
 	{
-		Controller::admin_update_film_from_repository();
+		ctrl.admin_update_film_from_repository();
 	}
 	else if (opt == "0")
 	{
@@ -97,15 +94,15 @@ void Console::show_user_menu()
 
 	if (option == "1")
 	{
-		Controller::user_show_films_by_genres();
+		ctrl.user_show_films_by_genres();
 	}
 	else if (option == "2")
 	{
-		Controller::user_delete_film_from_watchlist();
+		ctrl.user_delete_film_from_watchlist();
 	}
 	else if (option == "3")
 	{
-		Controller::user_show_watchlist();
+		ctrl.user_show_watchlist();
 	}
 	else if (option == "0")
 	{

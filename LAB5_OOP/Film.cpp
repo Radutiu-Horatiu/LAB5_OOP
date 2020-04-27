@@ -4,13 +4,13 @@ using namespace std;
 
 Film::Film() {}
 
-Film::Film(string TITLE, string GENRE, string YEAR, string TRAILER, int ID)
+Film::Film(string title, string genre, string year, string trailer, int id)
 {
-	title = TITLE;
-	genre = GENRE;
-	year = YEAR;
-	trailer = TRAILER;
-	id = ID;
+	this->title = title;
+	this->genre = genre;
+	this->year = year;
+	this->trailer = trailer;
+	this->id = id;
 }
 
 Film::~Film()
