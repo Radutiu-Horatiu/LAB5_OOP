@@ -28,12 +28,20 @@ bool Validate::validate_string(string s)
     return false;
 }
 
-bool Validate::validate_uniqueness(int id_to_validate, vector <Film>& films)
+bool Validate::validate_uniqueness(int id_to_validate, Repository& repo)
 {
     //checks if the film already exists
-    for (int i = 0; i < films.size(); i++)
-        if (films[i].get_id() == id_to_validate)
-            return false;
+    if (repo.find_film_by_id(id_to_validate) == true)
+        return false;
+
+    return true;
+}
+
+bool Validate::validate_uniqueness(int id_to_validate, WatchList& watchlist)
+{
+    //checks if the film already exists
+    if (watchlist.find_film_by_id(id_to_validate) == true)
+        return false;
 
     return true;
 }

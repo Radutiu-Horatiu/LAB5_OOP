@@ -1,7 +1,7 @@
 #pragma once
-#include "Validate.h"
 #include <vector>
 #include "Film.h"
+#include "Repository.h"
 using namespace std;
 
 class WatchList
@@ -23,18 +23,24 @@ public:
     ///
     /// <returns>    True if it succeeds, false if it fails. </returns>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    bool remove_film_from_watchlist(int ID);
+    bool remove_film_from_watchlist(int id);
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>    Adds a film to watchlist. </summary>
+    /// <summary>	Adds a film to watchlist. </summary>
     ///
-    /// <remarks>    Pinko, 4/25/2020. </remarks>
+    /// <remarks>	Horatiu, 4/27/2020. </remarks>
     ///
-    /// <param name="filmToBeAdded">    The film to be added. </param>
+    /// <param name="id">	The identifier. </param>
     ///
-    /// <returns>    True if it succeeds, false if it fails. </returns>
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    bool add_film_to_watchlist(Film filmToBeAdded);
+    /// <returns>	True if it succeeds, false if it fails. </returns>
+    bool add_film_to_watchlist(int id, Repository& repo);
 
+    /// <summary>	Searches for the first film by identifier. </summary>
+    ///
+    /// <remarks>	Horatiu, 4/27/2020. </remarks>
+    ///
+    /// <param name="id">	The identifier. </param>
+    ///
+    /// <returns>	True if it succeeds, false if it fails. </returns>
+    bool find_film_by_id(int id);
 };
 

@@ -1,7 +1,7 @@
 #include "Controller.h"
 #include <iostream>
 #include <string>
-
+#include "Validate.h"
 using namespace std;
 
 Controller::Controller()
@@ -100,7 +100,7 @@ void Controller::admin_update_film_from_repository()
 	}
 
 	Validate v;
-	if (v.validate_uniqueness(id, repo.get_films()))
+	if (v.validate_uniqueness(id, repo))
 	{
 		cout << "Film does not exist!\n";
 		return;
@@ -162,7 +162,7 @@ void Controller::user_show_films_by_genres()
 		if (answer == "y" or answer == "Y")
 		{
 
-			if (watchlist.add_film_to_watchlist(result[i]))
+			if (watchlist.add_film_to_watchlist(result[i].get_id(),repo))
 			{
 				repo.write_file(watchlist.get_watchlist(), "watchlist.txt");
 				cout << "\nFilm successfully added to your watchlist!\n\n";

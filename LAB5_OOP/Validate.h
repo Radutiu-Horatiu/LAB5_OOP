@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include "Film.h"
+#include "WatchList.h"
+#include "Repository.h"
 using namespace std;
 
 class Validate
@@ -39,7 +41,10 @@ public:
 	/// <param name="films">	The Vector in which to look for IDs. </param>
 	///
 	/// <returns>	True if it succeeds, false if it fails. </returns>
-	bool validate_uniqueness(int id_to_validate, vector <Film>& films);
+	bool validate_uniqueness(int id_to_validate, Repository& repo);
+
+	bool validate_uniqueness(int id_to_validate, WatchList& watchlist);
+
 
 };
 

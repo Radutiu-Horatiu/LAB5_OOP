@@ -3,9 +3,10 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "Validate.h"
 
 using namespace std;
-
+Validate v;
 Repository::Repository()
 {
 }
@@ -25,7 +26,7 @@ bool Repository::add_film(string title, string genre, string year, string traile
 {	
     //checking if everything is good to go
 	if (!(v.validate_string(genre) == true and
-		v.validate_int(year) == true and v.validate_uniqueness(id, get_films()) == true))
+		v.validate_int(year) == true and v.validate_uniqueness(id, *this) == true))
 		return false;
 
 	Film new_film(title, genre, year, trailer, id);
@@ -38,7 +39,7 @@ bool Repository::add_film(string title, string genre, string year, string traile
 bool Repository::remove_film(int id)
 {
     //film doesn t exist
-    if (v.validate_uniqueness(id, get_films()) == true)
+    if (v.validate_uniqueness(id, *this) == true)
         return false;
 
 	for (int i = 0; i < films.size(); i++)
@@ -52,7 +53,7 @@ bool Repository::remove_film(int id)
 bool Repository::update_film(int id, string new_title, string new_genre, string new_year, string new_trailer)
 {
     //film doesn t exist
-    if (v.validate_uniqueness(id, get_films()))
+    if (v.validate_uniqueness(id, *this))
         return false;
 
     for (int i = 0; i < films.size(); i++)
@@ -122,6 +123,26 @@ vector <Film> Repository::show_films_to_user(string genre)
         return genreReturnVector; //If FILMS Vector is empty, return Empty Vector.
     }
 
+}
+
+bool Repository::find_film_by_id(int id)
+{
+    for (int i = 0; i < films.size(); i++)
+        if (films[i].get_id() == id)
+            return true;
+
+    return false;
+}
+
+Film Repository::get_film_by_id(int id)
+{
+    Film empty_film;
+
+    for (int i = 0; i < films.size(); i++)
+        if (films[i].get_id() == id)
+            return films[i];
+
+    return empty_film;
 }
 
 void Repository::write_file(vector <Film> v, string filename)

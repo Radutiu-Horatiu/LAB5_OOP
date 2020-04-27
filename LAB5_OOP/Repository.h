@@ -1,6 +1,5 @@
 #pragma once
 #include "Film.h"
-#include "Validate.h"
 #include <vector>
 #include <string>
 
@@ -9,8 +8,8 @@ using namespace std;
 class Repository
 {
 private:
+
 	vector <Film> films;
-	Validate v;
 
 public:
 
@@ -91,6 +90,24 @@ public:
 	/// <returns>	True if empty, false if not. </returns>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	bool isEmpty();
+
+	/// <summary>	Searches for the first film by identifier. </summary>
+	///
+	/// <remarks>	Horatiu, 4/27/2020. </remarks>
+	///
+	/// <param name="id">	The identifier. </param>
+	///
+	/// <returns>	True if it succeeds, false if it fails. </returns>
+	bool find_film_by_id(int id);
+
+	/// <summary>	Gets film by identifier. </summary>
+	///
+	/// <remarks>	Horatiu, 4/27/2020. </remarks>
+	///
+	/// <param name="id">	The identifier. </param>
+	///
+	/// <returns>	The film by identifier. </returns>
+	Film get_film_by_id(int id);
 
 	//reading and writing within a file
 	void write_file(vector <Film> v, string filename);

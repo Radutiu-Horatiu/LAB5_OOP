@@ -1,5 +1,6 @@
 #include "WatchList.h"
-
+#include "Validate.h"
+#include "Repository.h"
 using namespace std;
 
 
@@ -24,11 +25,13 @@ bool WatchList::remove_film_from_watchlist(int ID)
     }
 }
 
-bool WatchList::add_film_to_watchlist(Film filmToBeAdded)
+bool WatchList::add_film_to_watchlist(int id, Repository& repo)
 {
+    Film filmToBeAdded = repo.get_film_by_id(id);
+
     Validate v;
 
-    if (!(v.validate_uniqueness(filmToBeAdded.get_id(), watchlist)))
+    if (!(v.validate_uniqueness(filmToBeAdded.get_id(), *this)))
     {
         return false; //Film already in watchlist.
     }
@@ -38,4 +41,13 @@ bool WatchList::add_film_to_watchlist(Film filmToBeAdded)
         return true; //Film successfully added to watchlist.
     }
 
+}
+
+bool WatchList::find_film_by_id(int id)
+{
+    for (int i = 0; i < watchlist.size(); i++)
+        if (watchlist[i].get_id() == id)
+            return true;
+
+    return false;
 }
