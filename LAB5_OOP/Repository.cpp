@@ -157,6 +157,49 @@ void Repository::write_file(vector <Film> v, string filename)
     fin.close();
 }
 
+void Repository::write_file(vector <int> v, string filename)
+{
+    ofstream fin;
+    fin.open(filename, ofstream::out | ofstream::trunc);
+
+    for (int i = 0; i < v.size(); i++)
+        fin << v[i] << " ";
+
+    fin.close();
+}
+
+void Repository::read_file(vector <int>& v, string file)
+{
+
+    ifstream myReadFile;
+    string filename = file;
+    myReadFile.open(filename.c_str());
+
+    int id;
+
+    string temp;
+
+    string::size_type sz;
+
+    while (!myReadFile.eof())
+    {
+
+        myReadFile >> temp;
+        if (temp != "")
+            id = stoi(temp, &sz);
+
+        if (temp != "")
+            v.push_back(id);
+
+    }
+
+    if (v.size() > 0)
+        v.erase(v.end() - 1);
+
+    myReadFile.close();
+
+}
+
 void Repository::read_file(vector <Film>& v, string file)
 {
 

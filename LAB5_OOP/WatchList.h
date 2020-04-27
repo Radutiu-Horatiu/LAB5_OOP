@@ -8,11 +8,11 @@ class WatchList
 {
 private:
 
-	vector<Film> watchlist;
+	vector <int> watchlist;
 
 public:
 
-    vector<Film>& get_watchlist() { return watchlist; }
+    vector <int>& get_watchlist() { return watchlist; }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>    Removes the film from watchlist described by ID. </summary>
@@ -32,7 +32,7 @@ public:
     /// <param name="id">	The identifier. </param>
     ///
     /// <returns>	True if it succeeds, false if it fails. </returns>
-    bool add_film_to_watchlist(int id, Repository& repo);
+    bool add_film_to_watchlist(int id);
 
     /// <summary>	Searches for the first film by identifier. </summary>
     ///

@@ -10,7 +10,7 @@ bool WatchList::remove_film_from_watchlist(int ID)
     {
         for (int i = 0; i < watchlist.size(); i++)
         {
-            if (watchlist[i].get_id() == ID)
+            if (watchlist[i] == ID)
             {
                 watchlist.erase(watchlist.begin() + i);
                 return true; //Film found and deleted.
@@ -25,19 +25,18 @@ bool WatchList::remove_film_from_watchlist(int ID)
     }
 }
 
-bool WatchList::add_film_to_watchlist(int id, Repository& repo)
+bool WatchList::add_film_to_watchlist(int id)
 {
-    Film filmToBeAdded = repo.get_film_by_id(id);
-
+  
     Validate v;
 
-    if (!(v.validate_uniqueness(filmToBeAdded.get_id(), *this)))
+    if (!(v.validate_uniqueness(id, *this)))
     {
         return false; //Film already in watchlist.
     }
     else
     {
-        watchlist.push_back(filmToBeAdded);
+        watchlist.push_back(id);
         return true; //Film successfully added to watchlist.
     }
 
@@ -46,7 +45,7 @@ bool WatchList::add_film_to_watchlist(int id, Repository& repo)
 bool WatchList::find_film_by_id(int id)
 {
     for (int i = 0; i < watchlist.size(); i++)
-        if (watchlist[i].get_id() == id)
+        if (watchlist[i] == id)
             return true;
 
     return false;

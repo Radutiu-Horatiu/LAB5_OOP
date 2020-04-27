@@ -162,7 +162,7 @@ void Controller::user_show_films_by_genres()
 		if (answer == "y" or answer == "Y")
 		{
 
-			if (watchlist.add_film_to_watchlist(result[i].get_id(),repo))
+			if (watchlist.add_film_to_watchlist(result[i].get_id()))
 			{
 				repo.write_file(watchlist.get_watchlist(), "watchlist.txt");
 				cout << "\nFilm successfully added to your watchlist!\n\n";
@@ -187,7 +187,7 @@ void Controller::user_delete_film_from_watchlist()
 
 	cout << "Your watchlist:\n";
 
-	repo.print_films(watchlist.get_watchlist());
+	user_show_watchlist();
 
 	int id;
 	cout << "\nID of film to remove: ";
@@ -231,5 +231,14 @@ void Controller::user_delete_film_from_watchlist()
 void Controller::user_show_watchlist()
 {
 	cout << "\nWatchlist\n\n";
-	repo.print_films(watchlist.get_watchlist());
+
+	vector <Film> films;
+	
+	for (int i = 0; i < watchlist.get_watchlist().size(); i++)
+	{
+		Film film = repo.get_film_by_id(watchlist.get_watchlist()[i]);
+		films.push_back(film);
+	}
+
+	repo.print_films(films);
 }

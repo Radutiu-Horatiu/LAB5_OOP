@@ -111,7 +111,9 @@ public:
 
 	//reading and writing within a file
 	void write_file(vector <Film> v, string filename);
+	void write_file(vector <int> v, string filename);
 	void read_file(vector <Film>& v, string file);
+	void read_file(vector <int>& v, string file);
 
 	Repository();
 	~Repository();
