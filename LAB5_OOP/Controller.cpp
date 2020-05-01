@@ -250,6 +250,7 @@ void Controller::user_show_watchlist()
 
 void Controller::user_show_watchlist_in_browser()
 {
+	repo.build_watchlist_html("watchlist.html", watchlist.get_watchlist());
 	repo.open_link_in_browser("watchlist.html");
 
 }
