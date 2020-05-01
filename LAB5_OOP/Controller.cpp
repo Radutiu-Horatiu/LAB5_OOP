@@ -13,6 +13,7 @@ Controller::Controller()
 
 Controller::~Controller()
 {
+	repo.build_watchlist_html("watchlist.html", watchlist.get_watchlist());
 }
 
 void Controller::admin_add_film_to_repository()
@@ -246,11 +247,6 @@ void Controller::user_show_watchlist()
 	}
 
 	repo.print_films(films);
-}
-
-void Controller::user_show_watchlist_in_browser()
-{
-	
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

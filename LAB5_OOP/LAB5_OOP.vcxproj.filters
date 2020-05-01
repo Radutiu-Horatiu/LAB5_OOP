@@ -67,5 +67,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="watchlist.html">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="header.html">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="footer.html">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

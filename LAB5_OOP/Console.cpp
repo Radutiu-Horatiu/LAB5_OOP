@@ -85,7 +85,7 @@ void Console::show_admin_menu()
 void Console::show_user_menu()
 {
 
-	cout << "\nUser menu\n\nOption 1 - Show films by genres\nOption 2 - Delete film from watchlist\nOption 3 - See watchlist\nOption 4 - Open watchlist in your browser\nOption 0 - Exit\n";
+	cout << "\nUser menu\n\nOption 1 - Show films by genres\nOption 2 - Delete film from watchlist\nOption 3 - See watchlist\nOption 0 - Exit\n";
 
 	string option = " ";
 
@@ -103,10 +103,6 @@ void Console::show_user_menu()
 	else if (option == "3")
 	{
 		ctrl.user_show_watchlist();
-	}
-	else if (option == "4")
-	{
-		ctrl.user_show_watchlist_in_browser();
 	}
 	else if (option == "0")
 	{
