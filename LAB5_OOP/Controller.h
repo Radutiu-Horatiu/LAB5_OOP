@@ -45,6 +45,11 @@ public:
 	/// <remarks>	Horatiu, 4/25/2020. </remarks>
 	void user_show_watchlist();
 
+	/// <summary>	User show watchlist in browser. </summary>
+	///
+	/// <remarks>	Horatiu, 5/1/2020. </remarks>
+	void user_show_watchlist_in_browser();
+
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
