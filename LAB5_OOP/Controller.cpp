@@ -1,6 +1,7 @@
 #include "Controller.h"
 #include <iostream>
 #include <string>
+#include <windows.h>
 #include "Validate.h"
 using namespace std;
 
@@ -245,6 +246,11 @@ void Controller::user_show_watchlist()
 	}
 
 	repo.print_films(films);
+}
+
+void Controller::user_show_watchlist_in_browser()
+{
+	
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
