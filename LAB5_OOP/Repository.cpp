@@ -26,7 +26,7 @@ bool Repository::add_film(string title, string genre, string year, string traile
 {	
     //checking if everything is good to go
 	if (!(v.validate_string(genre) == true and
-		v.validate_int(year) == true and v.validate_uniqueness(id, *this) == true))
+		v.validate_int(year) == true and v.validate_uniqueness(id, *this) == true) and year.length() == 4)
 		return false;
 
 	Film new_film(title, genre, year, trailer, id);
