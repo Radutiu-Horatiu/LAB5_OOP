@@ -148,14 +148,6 @@ public:
 	void read_file(vector <Film>& v, string file);
 	void read_file(vector <int>& v, string file);
 
-	/// <summary>	Builds watchlist HTML. </summary>
-	///
-	/// <remarks>	Horatiu, 5/1/2020. </remarks>
-	///
-	/// <param name="filename"> 	Name of the file. </param>
-	/// <param name="watchlist">	The watchlist to be written. </param>
-	void build_watchlist_html(string filename, vector <int> watchlist );
-
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Default constructor. </summary>
 	///

@@ -154,6 +154,7 @@
     <ClCompile Include="Repository.cpp" />
     <ClCompile Include="Validate.cpp" />
     <ClCompile Include="WatchList.cpp" />
+    <ClCompile Include="WatchlistBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Repository.h" />
     <ClInclude Include="Validate.h" />
     <ClInclude Include="WatchList.h" />
+    <ClInclude Include="WatchlistBuilder.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="filme.txt" />
@@ -171,6 +173,7 @@
     <None Include="ClassDiagram.cd" />
     <None Include="footer.html" />
     <None Include="header.html" />
+    <None Include="watchlist.csv" />
     <None Include="watchlist.html" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -309,35 +309,6 @@ bool Repository::isEmpty()
     }
 }
 
-void copy_line_by_line_from_and_store_into(string source, string destination)
-{
-    ofstream write;
-    write.open(destination, ofstream::out | ofstream::trunc);
-
-    ifstream file(source);
-    string str;
-    while (getline(file, str))
-        write << str << '\n';
-}
-
-void Repository::build_watchlist_html(string filename, vector <int> watchlist)
-{
-    ofstream fin;
-    fin.open(filename, std::fstream::in | std::fstream::out | std::fstream::app);
-
-    copy_line_by_line_from_and_store_into("header.html", filename);
-
-    for (int i = 0; i < watchlist.size(); i++)
-    {
-        Film film = get_film_by_id(watchlist[i]);
-        fin << "<tr><th scope = 'row'>" << i + 1 << "</th><td><strong>" << film.get_title() << "</strong></td><td>" << film.get_genre() << "<td>" << film.get_year() << "</td><td>" << film.get_number_likes() << "</td><td><a href=\"https://" << film.get_trailer() << "\" target='_blank'>Click link!</a></td></tr>" << '\n';
-    }
-
-    ifstream file("footer.html");
-    string str;
-    while (getline(file, str))
-        fin << str << '\n';
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // End of Repository.cpp

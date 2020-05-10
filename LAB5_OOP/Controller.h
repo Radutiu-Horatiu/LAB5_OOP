@@ -50,6 +50,10 @@ public:
 	/// <remarks>	Horatiu, 5/1/2020. </remarks>
 	void user_show_watchlist_in_browser();
 
+	/// <summary>	User show watchlist in CSV. </summary>
+	///
+	/// <remarks>	Horatiu, 5/10/2020. </remarks>
+	void user_show_watchlist_in_csv();
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

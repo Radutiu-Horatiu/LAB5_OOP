@@ -1,7 +1,9 @@
 #include "Controller.h"
 #include <iostream>
 #include <string>
+#include "WatchlistBuilder.h"
 #include "Validate.h"
+
 using namespace std;
 
 Controller::Controller()
@@ -12,7 +14,9 @@ Controller::Controller()
 
 Controller::~Controller()
 {
-	repo.build_watchlist_html("watchlist.html", watchlist.get_watchlist());
+	WatchlistBuilder builder;
+	builder.build_watchlist_html("watchlist.html", watchlist.get_watchlist(),repo);
+	builder.build_watchlist_csv("watchlist.csv", watchlist.get_watchlist(), repo);
 }
 
 void Controller::admin_add_film_to_repository()
@@ -250,8 +254,19 @@ void Controller::user_show_watchlist()
 
 void Controller::user_show_watchlist_in_browser()
 {
-	repo.build_watchlist_html("watchlist.html", watchlist.get_watchlist());
+	WatchlistBuilder builder;
+	builder.build_watchlist_html("watchlist.html", watchlist.get_watchlist(), repo);
+
 	repo.open_link_in_browser("watchlist.html");
+
+}
+
+void Controller::user_show_watchlist_in_csv()
+{
+	WatchlistBuilder builder;
+	builder.build_watchlist_csv("watchlist.csv", watchlist.get_watchlist(), repo);
+
+	repo.open_link_in_browser("watchlist.csv");
 
 }
 
