@@ -1,7 +1,9 @@
 #include "Controller.h"
 #include <iostream>
 #include <string>
-#include "WatchlistBuilder.h"
+#include "htmlBuilder.h"
+#include "csvBuilder.h"
+#include "txtBuilder.h"
 #include "Validate.h"
 
 using namespace std;
@@ -9,14 +11,18 @@ using namespace std;
 Controller::Controller()
 {
 	repo.read_file(repo.get_films(), "filme.txt");
-	repo.read_file(watchlist.get_watchlist(), "watchlist.txt");
+	repo.read_file(watchlist.get_watchlist(), "watchlist_id.txt");
+
+	builderMap.insert(make_pair("html", new htmlBuilder));
+	builderMap.insert(make_pair("txt", new txtBuilder));
+	builderMap.insert(make_pair("csv", new csvBuilder));
 }
 
 Controller::~Controller()
 {
-	WatchlistBuilder builder;
-	builder.build_watchlist_html("watchlist.html", watchlist.get_watchlist(),repo);
-	builder.build_watchlist_csv("watchlist.csv", watchlist.get_watchlist(), repo);
+	builderMap["html"]->build_watchlist(watchlist.get_watchlist(),repo);
+	builderMap["csv"]->build_watchlist(watchlist.get_watchlist(), repo);
+	builderMap["txt"]->build_watchlist(watchlist.get_watchlist(), repo);
 }
 
 void Controller::admin_add_film_to_repository()
@@ -169,7 +175,7 @@ void Controller::user_show_films_by_genres()
 
 			if (watchlist.add_film_to_watchlist(result[i].get_id()))
 			{
-				repo.write_file(watchlist.get_watchlist(), "watchlist.txt");
+				repo.write_file(watchlist.get_watchlist(), "watchlist_id.txt");
 				cout << "\nFilm successfully added to your watchlist!\n\n";
 			}
 			else
@@ -226,7 +232,7 @@ void Controller::user_delete_film_from_watchlist()
 					repo.get_films()[i].set_number_likes(repo.get_films()[i].get_number_likes() + 1);
 
 					repo.write_file(repo.get_films(), "filme.txt");
-					repo.write_file(watchlist.get_watchlist(), "watchlist.txt");
+					repo.write_file(watchlist.get_watchlist(), "watchlist_id.txt");
 
 					cout << "\nLike submitted!\n";
 				}
@@ -252,21 +258,20 @@ void Controller::user_show_watchlist()
 	repo.print_films(films);
 }
 
-void Controller::user_show_watchlist_in_browser()
+void Controller::user_export_to_menu()
 {
-	WatchlistBuilder builder;
-	builder.build_watchlist_html("watchlist.html", watchlist.get_watchlist(), repo);
+	cout << "\nExport\n\nGive export type(ex. html, csv, txt): ";
 
-	repo.open_link_in_browser("watchlist.html");
+	string option;
+	cin >> option;
 
-}
-
-void Controller::user_show_watchlist_in_csv()
-{
-	WatchlistBuilder builder;
-	builder.build_watchlist_csv("watchlist.csv", watchlist.get_watchlist(), repo);
-
-	repo.open_link_in_browser("watchlist.csv");
+	if (builderMap.find(option) == builderMap.end())
+		cout << "\nExport option not available!\n";
+	else
+	{
+		builderMap[option]->build_watchlist(watchlist.get_watchlist(), repo);
+		repo.open_link_in_browser("watchlist." + option);
+	}
 
 }
 

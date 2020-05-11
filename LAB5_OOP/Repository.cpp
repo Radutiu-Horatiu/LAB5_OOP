@@ -294,7 +294,6 @@ void Repository::open_link_in_browser(string link)
 {
     system(string("cmd /c start " + link).c_str());
 
-    //cout << link << " Was opened!" << endl;
 }
 
 bool Repository::isEmpty()

@@ -1,7 +1,8 @@
 #pragma once
 #include "Repository.h"
 #include "WatchList.h"
-
+#include <unordered_map>
+#include "WatchlistBuilder.h"
 using namespace std;
 
 class Controller
@@ -10,6 +11,9 @@ private:
 
 	Repository repo;
 	WatchList watchlist;
+
+	unordered_map <string, unique_ptr<WatchlistBuilder>> builderMap;
+
 
 public:
 	Controller();
@@ -45,15 +49,11 @@ public:
 	/// <remarks>	Horatiu, 4/25/2020. </remarks>
 	void user_show_watchlist();
 
-	/// <summary>	User show watchlist in browser. </summary>
+	/// <summary>	User export to menu. </summary>
 	///
-	/// <remarks>	Horatiu, 5/1/2020. </remarks>
-	void user_show_watchlist_in_browser();
+	/// <remarks>	Horatiu, 5/11/2020. </remarks>
 
-	/// <summary>	User show watchlist in CSV. </summary>
-	///
-	/// <remarks>	Horatiu, 5/10/2020. </remarks>
-	void user_show_watchlist_in_csv();
+	void user_export_to_menu();
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

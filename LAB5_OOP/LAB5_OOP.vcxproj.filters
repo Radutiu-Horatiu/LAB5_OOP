@@ -39,6 +39,15 @@
     <ClCompile Include="WatchlistBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="htmlBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="csvBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="txtBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h">
@@ -62,9 +71,21 @@
     <ClInclude Include="WatchlistBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="htmlBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="csvBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="txtBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="filme.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="watchlist_id.txt">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="watchlist.txt">
